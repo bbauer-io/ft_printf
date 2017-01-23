@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/23 12:00:33 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/23 13:01:18 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,10 @@ typedef struct		s_conversion
 
 int					ft_printf(const char *format, ...);
 int					ft_vprintf(const char *format, va_list arg);
+int					orchestrate_conversion(t_conversion *conversion,
+											va_list ap, t_format *format);
+
+
+
 
 #endif
