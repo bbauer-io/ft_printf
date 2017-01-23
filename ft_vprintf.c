@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/22 20:18:46 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/23 12:01:38 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void		print_var(t_format *format, va_list ap)
 	if (double_percent(format))
 		return ;
 	ft_bzero(&conversion, sizeof(t_conversion));
-	if (interpret_conversion(&conversion, ap, format) == GOOD &&
-				validate_conversion(&conversion, format) == GOOD)
+	if (orchestrate_conversion(&conversion, ap, format) == GOOD
+				&& validate_conversion(&conversion, format) == GOOD)
 		write_converted_var(&conversion, ap, format);
 
 /*

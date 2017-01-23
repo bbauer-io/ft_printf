@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/22 18:08:58 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/23 12:00:33 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "./libft/libft.h"
 
 # define ERROR		1
-# define OKAY		0
+# define GOOD		0
 
 typedef int			t_bool;
 
@@ -48,7 +48,7 @@ typedef enum			e_specifier
 	INVALID_SPECIFIER
 }						t_specifier;
 
-typedef struct		s_arguments
+typedef struct		s_conversion
 {
 	t_flags			flags;
 	unsigned int	width;
@@ -56,7 +56,7 @@ typedef struct		s_arguments
 	t_bool			precision_set;
 	t_length		length;
 	t_specifier		specifier;
-}					t_arguments;
+}					t_conversion;
 
 int					ft_printf(const char *format, ...);
 int					ft_vprintf(const char *format, va_list arg);
