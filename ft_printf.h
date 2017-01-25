@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/24 16:53:59 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/24 17:03:00 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct		s_conversion
 	t_flags			flags;
 	unsigned int	width;
 	unsigned int	precision;
-	int			precision_set;
+	int				precision_set;
 	t_length		length;
 	t_specifier		specifier;
 }					t_conversion;
