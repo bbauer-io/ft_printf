@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/23 12:01:38 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/24 16:07:54 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,25 @@ void		print_var(t_format *format, va_list ap)
 	if (double_percent(format))
 		return ;
 	ft_bzero(&conversion, sizeof(t_conversion));
-	if (orchestrate_conversion(&conversion, ap, format) == GOOD
-				&& validate_conversion(&conversion, format) == GOOD)
+	if (orchestrate_conversion(&conversion, ap, format) == GOOD)
+				//&& validate_conversion(&conversion, format) == GOOD)
 		write_converted_var(&conversion, ap, format);
-
+	else
+		ft_putstr("something went wrong here...");
 /*
 ** I think this following part is unnecessary... Why is it here?
 */
+/*
 	else if (format->str[format->index] == '%')
 	{
 		ft_putchar('%');
 		format->index++;
 		format->chars_written++;
 	}
+*/
 
 /*
-** THIS CODE WAS FOR TESTING THE FIRST STAGES
+ THIS CODE WAS FOR TESTING THE FIRST STAGES
 **	if (double_percent(format))
 **		return ;
 **	if (format->str[format->index] == 'd')
