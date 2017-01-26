@@ -1,12 +1,16 @@
-//
-//
-//
-//
-//NNEEDS A HEAEDER!!!
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_specifier.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/26 09:11:36 by bbauer            #+#    #+#             */
+/*   Updated: 2017/01/26 09:11:41 by bbauer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 /*
 ** Does the actual comparison of characters and returns the corresponding enum
