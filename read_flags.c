@@ -31,7 +31,8 @@ int				read_flags(t_conversion *conversion, t_format *format)
 {
 	char		c;
 
-	while ((c = format->str[format->index]) && test_for_flag(c, &conversion->flags))
+	while ((c = format->str[format->index])
+			&& test_for_flag(c, &conversion->flags))
 		format->index++;
 	return (GOOD);
 }

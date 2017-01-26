@@ -12,25 +12,18 @@
 #include "ft_printf.h"
 
 /*
-** A special/simplified atoi that works well in the read-width function where
-** are only reading one character at a time.
-*/
-
-static void	ft_atoi_incrementer(const char c, unsigned int *nbr)
-{
-	if (*nbr)
-		*nbr *= 10;
-	*nbr += c - '0';
-}
-
-/*
 ** Read specified width, get va_arg if the width is a * (specified in arguments
 ** instead of in the format string).
+*/
+
+/*
+** I am wondering if I need a new atoi that returns an Unsigned int here...
 */
 
 int			read_width(t_conversion *conversion, va_list ap, t_format *format)
 {
 	size_t		counter;
+	char		*ascii_nbr;
 
 	if (format->str[format->index] == '*')
 	{
@@ -41,11 +34,14 @@ int			read_width(t_conversion *conversion, va_list ap, t_format *format)
 	{
 		counter = 0;
 		while (ft_isdigit(format->str[format->index]))
-		{
-			ft_atoi_incrementer(format->str[format->index], &conversion->width);
 			counter++;
+		if (counter > 0)
+		{
+			format->index += counter;
+			ascii_nbr = ft_strndup(&format->str[format->index], counter);
+			conversion->width = ft_atoi(ascii_nbr);
+			ft_memdel((void **)&ascii_nbr);
 		}
-		format->index += counter;
 	}
 	return (GOOD);
 }

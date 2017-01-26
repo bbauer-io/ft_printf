@@ -59,18 +59,26 @@ typedef struct		s_conversion
 	t_specifier		specifier;
 }					t_conversion;
 
+/*
+** These are the main functions that might be used within a larger program.
+*/
+
 int					ft_printf(const char *format, ...);
 int					ft_vprintf(const char *format, va_list arg);
+
+/*
+** Functions for reading the various flags of each conversion.
+*/
+
 int					read_conversion_substr(t_conversion *conversion,
 											va_list ap, t_format *format);
-
 int					read_flags(t_conversion *conversion, t_format *format);
 int					read_width(t_conversion *conversion, va_list ap,
 											t_format *format);
-int					read_precision(t_conversion conversion, va_list ap,
+int					read_precision(t_conversion *conversion, va_list ap,
 											t_format *format);
-int					read_length(t_conversion conversion, t_format *format);
-int					read_specifier(t_conversion conversion, t_format *format);
+int					read_length(t_conversion *conversion, t_format *format);
+int					read_specifier(t_conversion *conversion, t_format *format);
 
 
 #endif

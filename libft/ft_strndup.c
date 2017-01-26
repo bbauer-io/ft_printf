@@ -12,7 +12,11 @@
 
 #include "libft.h"
 
-char	*ft_strndup(char *str, size_t n)
+/*
+** Copies up to n chars to new str, always null terminates the new string.
+*/
+
+char	*ft_strndup(const char *str, size_t n)
 {
 	char			*new_str;
 	unsigned int	i;
