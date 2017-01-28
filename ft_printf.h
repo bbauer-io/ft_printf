@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/24 17:03:00 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/27 20:08:16 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int					ft_printf(const char *format, ...);
 int					ft_vprintf(const char *format, va_list arg);
 
 /*
-** Functions for reading the various flags of each conversion.
+** Functions for reading the various flags of each conversion. (Each time a '%'
+** flag is encountered, all of these functions will be executed in the order
+** listed here to process the specifiers.
 */
 
 int					read_conversion_substr(t_conversion *conversion,
@@ -79,6 +81,12 @@ int					read_precision(t_conversion *conversion, va_list ap,
 											t_format *format);
 int					read_length(t_conversion *conversion, t_format *format);
 int					read_specifier(t_conversion *conversion, t_format *format);
+int					verify_flag_harmony(t_conversion *conversion,
+											t_format *format);
 
+/*
+** The following functions will print the stored data in the format specified
+** by the stored flags.
+*/
 
 #endif
