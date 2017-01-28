@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/27 20:03:40 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/28 07:56:39 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,23 @@ void		print_var(t_format *format, va_list ap)
 		return ;
 	ft_bzero(&conversion, sizeof(t_conversion));
 	if (read_conversion_substr(&conversion, ap, format) == GOOD
-			&& verify_flag_harmony(&conversion, format) == GOOD)
-		write_converted_var(&conversion, ap, format);
-	else
-		ft_putstr_fd("something went wrong here...", 2);
-
-/*
-	I think this following part is unnecessary... Why is it here?
-	// MAYBE this is to catch a %-+0% type trick and print it as a %%
-
+			&& verify_flag_compatibility(&conversion, format) == GOOD)
+		write_conversion_substr(&conversion, ap, format);
 	else if (format->str[format->index] == '%')
 	{
 		ft_putchar('%');
 		format->index++;
 		format->chars_written++;
 	}
-*/
 
 /*
- THIS CODE WAS FOR TESTING THE FIRST STAGES
+**  THIS CODE WAS FOR TESTING THE FIRST STAGES
 **	if (double_percent(format))
 **		return ;
 **	if (format->str[format->index] == 'd')
 **		format->chars_written += ft_putstr(ft_itoa(va_arg(ap, int)));
 **	return ;
 */
-
 }
 
 /*
