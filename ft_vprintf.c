@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/28 07:56:39 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/28 16:40:06 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Prints a '%' when "%%" has appeared in the format string.
 */
 
-int			double_percent(t_format *format)
+static int		double_percent(t_format *format)
 {
 	if (format->str[format->index] == '%')
 	{
@@ -31,9 +31,11 @@ int			double_percent(t_format *format)
 /*
 ** Calls function to check for "%%", if not that, then we go on to decipher the
 ** symbols and convert the variable into the specified formats for printing.
+** double_percent() appears twice in case someone accidentally slips some flags
+** in between the two percent signs.
 */
 
-void		print_var(t_format *format, va_list ap)
+static void		print_var(t_format *format, va_list ap)
 {
 	t_conversion	conversion;
 
@@ -42,22 +44,12 @@ void		print_var(t_format *format, va_list ap)
 	ft_bzero(&conversion, sizeof(t_conversion));
 	if (read_conversion_substr(&conversion, ap, format) == GOOD
 			&& verify_flag_compatibility(&conversion, format) == GOOD)
-		write_conversion_substr(&conversion, ap, format);
-	else if (format->str[format->index] == '%')
 	{
-		ft_putchar('%');
-		format->index++;
-		format->chars_written++;
+		write_conversion_substr(&conversion, ap, format);
+		return ;
 	}
-
-/*
-**  THIS CODE WAS FOR TESTING THE FIRST STAGES
-**	if (double_percent(format))
-**		return ;
-**	if (format->str[format->index] == 'd')
-**		format->chars_written += ft_putstr(ft_itoa(va_arg(ap, int)));
-**	return ;
-*/
+	else if (double_percent(format))
+		return ;
 }
 
 /*
@@ -66,7 +58,7 @@ void		print_var(t_format *format, va_list ap)
 ** Returns the number of chars printed.
 */
 
-int			ft_vprintf(const char *format, va_list ap)
+int				ft_vprintf(const char *format, va_list ap)
 {
 	t_format	format_tracker;
 
@@ -88,4 +80,4 @@ int			ft_vprintf(const char *format, va_list ap)
 		}
 	}
 	return (format_tracker.chars_written);
-*}
+}
