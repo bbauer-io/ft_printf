@@ -6,14 +6,17 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 16:20:35 by bbauer            #+#    #+#              #
-#    Updated: 2017/01/22 18:02:06 by bbauer           ###   ########.fr        #
+#    Updated: 2017/01/29 15:37:04 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = ft_printf.a
 CC = gcc
-SRC =  ft_printf.c ft_vprintf.c
+SRC =  ft_printf.c ft_vprintf.c read_flags.c read_length.c read_precision.c \
+	   read_specifier.c read_width.c verify_flag_compatibility.c \
+	   verify_flag_compatibility_continued.c write_conversion_substr.c \
+	   write_signed_int.c
 OPT = $(SRC:.c=.o)
 HEADER = ./ft_printf.h ./libft/libft.h
 LIBFT = ./libft/libft.a
@@ -42,3 +45,4 @@ fclean: clean
 	/bin/rm -f a.out
 
 re: fclean all
+

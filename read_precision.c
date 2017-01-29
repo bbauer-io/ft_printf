@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:12:24 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/26 13:50:38 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:41:11 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,6 @@ static int		treat_negative_precision_as_none(t_conversion *conversion,
 int				read_precision(t_conversion *conversion, va_list ap,
 												t_format *format)
 {
-	size_t		length;
-	char		*ascii_nbr;
-
 	if (format->str[format->index] == '.')
 	{
 		format->index++;

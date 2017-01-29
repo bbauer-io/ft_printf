@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 15:33:43 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:50:40 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static intmax_t		get_signed_int_arg(t_conversion *conversion, va_list ap)
 
 	if (conversion->length == HH)
 		nbr = (signed char)va_arg(ap, int);
-	if (conversion->length == H)
+	if (conversion->length == H || conversion->length == DEFAULT)
 		nbr = va_arg(ap, int);
 	if (conversion->length == LL)
 		nbr = va_arg(ap, long long);
@@ -37,8 +37,11 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 	intmax_t	nbr;
 	char		*write_me;
 
+	if (format)
+	{
 	nbr = get_signed_int_arg(conversion, ap);
 	write_me = ft_itoa(nbr);
 	ft_putnbr(nbr);
+	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 07:57:15 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 13:53:52 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:42:01 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void				write_conversion_substr(t_conversion *conversion,
 {
 	if (conversion->specifier == S_DECIMAL)
 		write_signed_int(conversion, ap, format);
-	if (conversion->specifier == U_DECIMAL)
+/*	if (conversion->specifier == U_DECIMAL)
 		write_unsigned_int(conversion, ap, format);
-/*	if (conversion->specifier == HEX_UPPER
+	if (conversion->specifier == HEX_UPPER
 					|| conversion->specifier == HEX_LOWER)
 		write_hex(conversion, ap, format);
 	if (conversion->specifier == OCTAL)
