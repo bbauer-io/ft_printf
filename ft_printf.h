@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/28 12:58:35 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:20:47 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@
 # define ERROR		1
 # define GOOD		0
 
-//typedef int			t_bool;
+typedef enum		e_bool
+{
+	FALSE, TRUE
+}					t_bool;
 
 typedef struct		s_flags
 {
-	int			hash;
-	int			left_justify;
-	int			pad_with_zeros;
-	int			pos_values_begin_w_space;
-	int			show_sign;
+	t_bool		hash;
+	t_bool		left_justify;
+	t_bool		pad_with_zeros;
+	t_bool		pos_values_begin_w_space;
+	t_bool		show_sign;
 }					t_flags;
 
 typedef struct		s_format
@@ -43,18 +46,18 @@ typedef enum		e_length
 	DEFAULT, HH, H, L, LL, J, Z
 }					t_length;
 
-typedef enum			e_specifier
+typedef enum		e_specifier
 {
 	S_DECIMAL, U_DECIMAL, OCTAL, HEX_LOWER, HEX_UPPER, CHAR, STRING, POINTER,
 	INVALID_SPECIFIER
-}						t_specifier;
+}					t_specifier;
 
 typedef struct		s_conversion
 {
 	t_flags			flags;
 	unsigned int	width;
 	unsigned int	precision;
-	int				precision_set;
+	t_bool			precision_set;
 	t_length		length;
 	t_specifier		specifier;
 }					t_conversion;
@@ -68,12 +71,10 @@ int					ft_vprintf(const char *format, va_list arg);
 
 /*
 ** Functions for reading the various flags of each conversion. (Each time a '%'
-** flag is encountered, all of these functions will be executed in the order
-** listed here to process the specifiers.
+** flag is encountered, all of these functions will be called to process The
+** specifiers.
 */
 
-int					read_conversion_substr(t_conversion *conversion,
-											va_list ap, t_format *format);
 int					read_flags(t_conversion *conversion, t_format *format);
 int					read_width(t_conversion *conversion, va_list ap,
 											t_format *format);
@@ -91,7 +92,19 @@ int					verify_flag_compatibility_continued(t_conversion
 ** by the stored flags.
 */
 
-int					write_conversion_substr(t_conversion *conversion,
+void				write_conversion_substr(t_conversion *conversion,
 											va_list ap, t_format *format);
+void				write_signed_int(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_unsigned_int(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_hex(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_octal(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_string(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_char(t_conversion *conversion, va_list ap,
+											t_format *format);
 
 #endif

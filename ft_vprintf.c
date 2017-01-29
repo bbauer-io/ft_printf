@@ -6,11 +6,28 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/28 16:40:06 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 13:13:10 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** %[flags][width][.precision][length]specifier
+*/
+
+static int		read_conversion_substr(t_conversion *conversion, va_list ap,
+					t_format *format)
+{
+	if (read_flags(conversion, format) == GOOD
+				&& read_width(conversion, ap, format) == GOOD
+				&& read_precision(conversion, ap, format) == GOOD
+				&& read_length(conversion, format) == GOOD
+				&& read_specifier(conversion, format) == GOOD)
+		return (GOOD);
+	else
+		return (ERROR);
+}
 
 /*
 ** Prints a '%' when "%%" has appeared in the format string.

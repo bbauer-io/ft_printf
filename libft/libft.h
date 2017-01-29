@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/19 18:07:22 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:30:25 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_gnl
 	struct s_gnl	*next;
 }					t_gnl;
 
+size_t				ft_nbrlen(int nbr);
 int					get_next_line(int const fd, char **line);
 void				*ft_realloc(void *ptr, size_t size_original,
 						size_t size_add);

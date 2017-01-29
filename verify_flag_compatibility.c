@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 20:03:25 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/28 10:50:21 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/29 14:42:25 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void			pos_values_begin_space_correction(t_conversion *conversion,
 		conversion->flags.pos_values_begin_w_space = 0;
 	}
 }
-
 
 static void			pad_zeros_flag_correction(t_conversion *conversion,
 															t_format *format)
