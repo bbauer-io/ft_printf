@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 15:50:40 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 11:24:13 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 															t_format *format)
 {
 	intmax_t	nbr;
-	char		*write_me;
 
 	if (format)
 	{
-	nbr = get_signed_int_arg(conversion, ap);
-	write_me = ft_itoa(nbr);
-	ft_putnbr(nbr);
+		nbr = get_signed_int_arg(conversion, ap);
+		ft_putnbr(nbr);
 	}
 	return ;
 }
