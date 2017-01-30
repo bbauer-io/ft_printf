@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:12:24 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 15:41:11 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 09:36:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,6 @@ static int		precision_not_valid_error_msg(t_format *format)
 	ft_putnbr_fd(format->index, 2);
 	ft_putchar_fd('\n', 2);
 	return (ERROR);
-}
-
-/*
-** A positive number was found after a '.' so we'll copy that number and run it
-** through atoi before saving it.
-*/
-
-static int		parse_valid_precision(t_conversion *conversion,
-												t_format *format)
-{
-	size_t		length;
-	char		*ascii_nbr;
-
-	length = 0;
-	while (ft_isdigit(format->str[format->index]))
-		length++;
-	format->index += length;
-	ascii_nbr = ft_strndup(&format->str[format->index], length);
-	conversion->precision = ft_atoi(ascii_nbr);
-	conversion->precision_set = 1;
-	ft_memdel((void **)&ascii_nbr);
-	return (GOOD);
 }
 
 /*
@@ -76,13 +54,19 @@ int				read_precision(t_conversion *conversion, va_list ap,
 		format->index++;
 		if (format->str[format->index] == '-')
 			return (treat_negative_precision_as_none(conversion, format));
-		if (ft_isdigit(format->str[format->index]))
-			return (parse_valid_precision(conversion, format));
 		if (format->str[format->index] == '*')
 		{
 			conversion->width = va_arg(ap, unsigned int);
 			conversion->precision_set = 1;
 			format->index++;
+			return (GOOD);
+		}
+		if (ft_isdigit(format->str[format->index]))
+		{
+			conversion->precision = ft_atoi(&format->str[format->index]);
+			conversion->precision_set = 1;
+			while (ft_isdigit(format->str[format->index]))
+				format->index++;
 			return (GOOD);
 		}
 		return (precision_not_valid_error_msg(format));

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:11:52 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/26 09:11:57 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 09:23:13 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,16 @@
 
 int			read_width(t_conversion *conversion, va_list ap, t_format *format)
 {
-	size_t		counter;
-	char		*ascii_nbr;
-
 	if (format->str[format->index] == '*')
 	{
 		conversion->width = va_arg(ap, unsigned int);
 		format->index++;
 	}
-	else
+	else if (ft_isdigit(format->str[format->index]))
 	{
-		counter = 0;
+		conversion->width = ft_atoi(&format->str[format->index]);
 		while (ft_isdigit(format->str[format->index]))
-			counter++;
-		if (counter > 0)
-		{
-			format->index += counter;
-			ascii_nbr = ft_strndup(&format->str[format->index], counter);
-			conversion->width = ft_atoi(ascii_nbr);
-			ft_memdel((void **)&ascii_nbr);
-		}
+			format->index++;
 	}
 	return (GOOD);
 }

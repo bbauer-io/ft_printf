@@ -5,44 +5,124 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/03 16:20:35 by bbauer            #+#    #+#              #
-#    Updated: 2017/01/29 15:37:04 by bbauer           ###   ########.fr        #
+#    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
+#    Updated: 2017/01/30 09:41:36 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = ft_printf.a
-CC = gcc
-SRC =  ft_printf.c ft_vprintf.c read_flags.c read_length.c read_precision.c \
-	   read_specifier.c read_width.c verify_flag_compatibility.c \
-	   verify_flag_compatibility_continued.c write_conversion_substr.c \
-	   write_signed_int.c
-OPT = $(SRC:.c=.o)
-HEADER = ./ft_printf.h ./libft/libft.h
-LIBFT = ./libft/libft.a
-OPTIONS = -c
-FLAGS = -Wall -Wextra -Werror
-TESTMAIN = ./tests/main.c
-TESTOPTIONS = -g
+NAME =				libftprintf.a
+
+CC =				gcc
+FLAGS =				-Wall -Werror -Wextra -g
+
+FT_SRC_DIR =		./libft
+PRINTF_SRC_DIR =	./ft_printf
+
+HEADER =			$(FT_SRC_DIR)libft.h
+PRINTF_SRC_HEADER =	$(PRINTF_SRC_DIR)ft_printf.h
+
+LIBFT_COMPILED = ft_atoi.o \
+				 ft_bzero.o \
+				 ft_isalnum.o \
+				 ft_isalpha.o \
+				 ft_isascii.o \
+				 ft_isdigit.o \
+				 ft_isprint.o \
+				 ft_itoa.o \
+				 ft_lstadd.o \
+				 ft_lstdel.o \
+				 ft_lstdelone.o \
+				 ft_lstiter.o \
+				 ft_lstmap.o \
+				 ft_lstnew.o \
+				 ft_memalloc.o \
+				 ft_memccpy.o \
+				 ft_memchr.o \
+				 ft_memcmp.o \
+				 ft_memcpy.o \
+				 ft_memdel.o \
+				 ft_memmove.o \
+				 ft_memset.o \
+				 ft_putchar.o \
+				 ft_putchar_fd.o \
+				 ft_putendl.o \
+				 ft_putendl_fd.o \
+				 ft_putnbr.o \
+				 ft_putnbr_fd.o \
+				 ft_putstr.o \
+				 ft_putstr_fd.o \
+				 ft_strcat.o \
+				 ft_strchr.o \
+				 ft_strclr.o \
+				 ft_strcmp.o \
+				 ft_strcpy.o \
+				 ft_strdel.o \
+				 ft_strdup.o \
+				 ft_strequ.o \
+				 ft_striter.o \
+				 ft_striteri.o \
+				 ft_strjoin.o \
+				 ft_strlcat.o \
+				 ft_strlen.o \
+				 ft_strmap.o \
+				 ft_strmapi.o \
+				 ft_strncat.o \
+				 ft_strncmp.o \
+				 ft_strncpy.o \
+				 ft_strndup.o \
+				 ft_strnequ.o \
+				 ft_strnew.o \
+				 ft_strnstr.o \
+				 ft_strrchr.o \
+				 ft_strsplit.o \
+				 ft_strstr.o \
+				 ft_strsub.o \
+				 ft_strtrim.o \
+				 ft_tolower.o \
+				 ft_toupper.o \
+				 ft_wrdcnt.o \
+				 ft_wrdcntd.o \
+				 ft_wrdlen.o \
+				 ft_wrdsplit.o \
+				 get_next_line.o
+
+
+FT_PRINTF_COMPILED = ft_printf.o \
+					 ft_vprintf.o \
+					 read_flags.o \
+					 read_length.o \
+					 read_precision.o \
+					 read_specifier.o \
+					 read_width.o \
+					 verify_flag_compatibility.o \
+					 verify_flag_compatibility_continued.o \
+					 write_conversion_substr.o \
+					 write_signed_int.o
+
+
+COMPILED =			$(LIBFT_COMPILED) $(FT_PRINTF_COMPILED)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(OPTIONS) $(SRC) $(HEADER) $(FLAGS)
-	ar rc $(NAME) $(OPT) $(LIBFT)
-	ranlib $(NAME)
+$(NAME): $(COMPILED)
+	@ar rc $(NAME) $(COMPILED)
+	@ranlib $(NAME)
+	@echo "made" $(NAME)
 
-test:
-	$(CC) $(SRC) $(HEADER) $(TESTMAIN) $(FLAGS) $(LIBFT) $(TESTOPTIONS)
+$(LIBFT_COMPILED): %.o: $(FT_SRC_DIR)/%.c
+	@$(CC) -c $(FLAGS) -I $(FT_SRC_DIR) $< -o $@
+
+$(FT_PRINTF_COMPILED): %.o: $(PRINTF_SRC_DIR)/%.c
+	@$(CC) -c $(FLAGS) -I $(FT_SRC_DIR) -I $(PRINTF_SRC_DIR) $< -o $@
 
 clean:
-	/bin/rm -f $(OPT) main.o
-	/bin/rm -f ft_printf.h.gch
-	/bin/rm -rf a.out.dSYM
+	@-/bin/rm -f $(COMPILED)
+	@-/bin/rm -rf a.out.dSYM
+	@echo "cleaned" $(NAME)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f a.out
+	@-/bin/rm -f $(NAME)
+	@echo "fcleaned" $(NAME)
 
 re: fclean all
-

@@ -6,11 +6,13 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 15:50:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/11/07 15:58:27 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 09:06:21 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+#include "libft.h"
+
+int		ft_isdigit(size_t c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);

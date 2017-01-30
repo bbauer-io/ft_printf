@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 15:30:25 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 09:05:54 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				ft_bzero(void *s, size_t n);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
-int					ft_isdigit(int c);
+int					ft_isdigit(size_t c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
 void				*ft_memalloc(size_t size);
