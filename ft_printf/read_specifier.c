@@ -6,42 +6,49 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:11:36 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 15:39:51 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 10:21:48 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** Error message functions.
+** Error message functions. I don't want them, but do want to convert them to
+** notes / comments.
 */
 
-static int				reached_end_of_format_str_error(t_format *format)
-{
-	ft_putstr_fd("ft_printf ERROR: reached end of format string but have not \
-				resolved an expected specifier!", 2);
-	ft_putnbr_fd(format->index, 2);
-	ft_putchar_fd('\n', 2);
-	return (ERROR);
-}
+/*
+**static int				reached_end_of_format_str_error(t_format *format)
+**{
+**	ft_putstr_fd("ft_printf ERROR: reached end of format string but have not \
+**				resolved an expected specifier!", 2);
+**	ft_putnbr_fd(format->index, 2);
+**	ft_putchar_fd('\n', 2);
+**	return (ERROR);
+**}
+*/
 
-static int				invalid_specifier_error(t_format *format)
-{
-	ft_putstr_fd("ft_printf ERROR: the specifier is not recognized as valid by \
-				this version of ft_printf! index: ", 2);
-	ft_putnbr_fd(format->index, 2);
-	ft_putchar_fd('\n', 2);
-	return (ERROR);
-}
+/*
+**static int				invalid_specifier_error(t_format *format)
+**{
+**	ft_putstr_fd("ft_printf ERROR: the specifier is not recognized as valid by \
+**				this version of ft_printf! index: ", 2);
+**	ft_putnbr_fd(format->index, 2);
+**	ft_putchar_fd('\n', 2);
+**	return (ERROR);
+**}
+*/
 
-static void				mixed_length_and_doucs(t_format *format)
-{
-	ft_putstr_fd("ft_printf ERROR: 'D', 'O', 'U', 'C', 'S' specifiers can't be \
-				mixed with length specifiers (l, ll, h, hh, j, z)! 'l' is \
-				implied. index: ", 2);
-	ft_putnbr_fd(format->index, 2);
-	ft_putchar_fd('\n', 2);
-}
+/*
+**static void				mixed_length_and_doucs(t_format *format)
+**{
+**	ft_putstr_fd("ft_printf ERROR: 'D', 'O', 'U', 'C', 'S' specifiers can't be \
+**				mixed with length specifiers (l, ll, h, hh, j, z)! 'l' is \
+**				implied. index: ", 2);
+**	ft_putnbr_fd(format->index, 2);
+**	ft_putchar_fd('\n', 2);
+**}
+*/
 
 /*
 ** Does the actual comparison of characters and returns the corresponding enum
@@ -80,17 +87,13 @@ int						read_specifier(t_conversion *conversion,
 	char	c;
 
 	if (!format->str[format->index])
-		return (reached_end_of_format_str_error(format));
+		return (ERROR);
 	c = format->str[format->index];
 	conversion->specifier = compare_specifiers(format->str[format->index]);
 	if (conversion->specifier == INVALID_SPECIFIER)
-		return (invalid_specifier_error(format));
+		return (ERROR);
 	if (c == 'D' || c == 'U' || c == 'O' || c == 'C' || c == 'S')
-	{
-		if (conversion->length != DEFAULT)
-			mixed_length_and_doucs(format);
 		conversion->length = L;
-	}
 	format->index++;
 	return (GOOD);
 }

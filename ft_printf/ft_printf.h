@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/30 07:20:02 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 11:11:09 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int					read_specifier(t_conversion *conversion, t_format *format);
 int					verify_flag_compatibility(t_conversion *conversion,
 											t_format *format);
 int					verify_flag_compatibility_continued(t_conversion
-											*conversion, t_format *format);
+											*conversion);
 
 /*
 ** The following functions will print the stored data in the format specified

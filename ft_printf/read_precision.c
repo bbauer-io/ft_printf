@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:12:24 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/30 09:36:36 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/30 10:23:39 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 ** '.' (should only be digits);
 */
 
-static int		precision_not_valid_error_msg(t_format *format)
-{
-	ft_putstr_fd("ft_printf ERROR: detected '.' char but no valid precision \
-			value followed! Only digits (0-9) are valid! Format string index: "
-			, 2);
-	ft_putnbr_fd(format->index, 2);
-	ft_putchar_fd('\n', 2);
-	return (ERROR);
-}
+/*
+**static int		precision_not_valid_error_msg(t_format *format)
+**{
+**	ft_putstr_fd("ft_printf ERROR: detected '.' char but no valid precision \
+**			value followed! Only digits (0-9) are valid! Format string index: "
+**			, 2);
+**	ft_putnbr_fd(format->index, 2);
+**	ft_putchar_fd('\n', 2);
+**	return (ERROR);
+**}
+*/
 
 /*
 ** The first char has tested as '-' so we skip past that and consecutive digits.
@@ -69,7 +71,7 @@ int				read_precision(t_conversion *conversion, va_list ap,
 				format->index++;
 			return (GOOD);
 		}
-		return (precision_not_valid_error_msg(format));
+		return (ERROR);
 	}
 	return (GOOD);
 }
