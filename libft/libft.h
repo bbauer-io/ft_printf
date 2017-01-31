@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/30 09:05:54 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/01/31 11:43:09 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_gnl
 	struct s_gnl	*next;
 }					t_gnl;
 
+char				*ft_itoa_base(int value, int base);
 size_t				ft_nbrlen(int nbr);
 int					get_next_line(int const fd, char **line);
 void				*ft_realloc(void *ptr, size_t size_original,
