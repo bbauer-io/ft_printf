@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/01/31 11:55:20 by bbauer           ###   ########.fr        #
+#    Updated: 2017/01/31 15:38:20 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,8 @@ FT_PRINTF_COMPILED = ft_printf.o \
 					 verify_flag_compatibility.o \
 					 verify_flag_compatibility_continued.o \
 					 write_conversion_substr.o \
+					 write_hex.o \
+					 write_octal.o \
 					 write_signed_int.o
 
 
@@ -118,7 +120,7 @@ $(FT_PRINTF_COMPILED): %.o: $(PRINTF_SRC_DIR)/%.c
 
 clean:
 	@-/bin/rm -f $(COMPILED)
-	@-/bin/rm -rf a.out.dSYM
+	@-/bin/rm -rf a.out a.out.dSYM
 	@echo "cleaned" $(NAME)
 
 fclean: clean
