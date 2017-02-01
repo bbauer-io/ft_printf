@@ -18,6 +18,8 @@ void				write_hex(t_conversion *conversion, va_list ap, t_format
 	char	*draft;
 	if (conversion && format)
 		draft = ft_itoa_base(va_arg(ap, int), 16);
+	if (conversion->specifier == HEX_LOWER)
+		ft_tolower_str(draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
 }

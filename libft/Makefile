@@ -23,7 +23,8 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strncmp.c ft_strncpy.c ft_strndup.c ft_strnequ.c ft_strnew.c \
 	  ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
 	  ft_strtrim.c ft_tolower.c ft_toupper.c ft_wrdcnt.c ft_wrdcntd.c \
-	  ft_wrdlen.c ft_wrdsplit.c get_next_line.c ft_itoa_base.c ft_nbrlen.c
+	  ft_wrdlen.c ft_wrdsplit.c get_next_line.c ft_itoa_base.c ft_nbrlen.c \
+	  ft_tolower_str.c ft_toupper_str.c
 OPT = $(SRC:.c=.o)
 HEADER = ./libft.h
 FLAGS = -c -Wall -Wextra -Werror
