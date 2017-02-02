@@ -71,8 +71,8 @@ int					ft_vprintf(const char *format, va_list arg);
 
 /*
 ** Functions for reading the various flags of each conversion. (Each time a '%'
-** flag is encountered, all of these functions will be called to process The
-** specifiers.
+** flag is encountered, all of these functions will be called to read The
+** various specifiers.
 */
 
 int					read_flags(t_conversion *conversion, t_format *format);
@@ -82,6 +82,12 @@ int					read_precision(t_conversion *conversion, va_list ap,
 											t_format *format);
 int					read_length(t_conversion *conversion, t_format *format);
 int					read_specifier(t_conversion *conversion, t_format *format);
+
+/*
+** Next these two functions will be called to make sure there aren't any
+** conflicting flags.
+*/
+
 int					verify_flag_compatibility(t_conversion *conversion,
 											t_format *format);
 int					verify_flag_compatibility_continued(t_conversion
@@ -89,7 +95,7 @@ int					verify_flag_compatibility_continued(t_conversion
 
 /*
 ** The following functions will print the stored data in the format specified
-** by the stored flags.
+** by the stored flags. A pointer would be printed by write_hex.
 */
 
 void				write_conversion_substr(t_conversion *conversion,
@@ -106,5 +112,11 @@ void				write_string(t_conversion *conversion, va_list ap,
 											t_format *format);
 void				write_char(t_conversion *conversion, va_list ap,
 											t_format *format);
+
+/*
+** Here are a couple reusable helper functions for the write functions
+*/
+
+uintmax_t			get_unsigned_int_arg(t_conversion *conversion, va_list ap);
 
 #endif

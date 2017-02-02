@@ -13,8 +13,13 @@ void				write_string(t_conversion *conversion, va_list ap, t_format
 {
 	char	*draft;
 
-	if (conversion && format)
+	if (conversion)
+	{
 		draft = va_arg(ap, char *);
-	ft_putstr(draft);
-	format->chars_written += ft_strlen(draft);
+		if (!draft)
+			draft = ft_strdup("(null)");
+		ft_putstr(draft);
+		format->chars_written += ft_strlen(draft);
+		return ;
+	}
 }

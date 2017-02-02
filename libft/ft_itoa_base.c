@@ -67,12 +67,13 @@ static char		*create_base_str(char *digits, int *indices, int i, int value)
 	int		j;
 	char	*result;
 
-	result = malloc(i * sizeof(char));
+	result = malloc((i + 1) * sizeof(char));
 	j = 0;
 	if (value < 0)
 		result[j++] = '-';
 	while (i >= 0)
 		result[j++] = digits[indices[i--]];
+	result[j] = '\0';
 	return (result);
 }
 

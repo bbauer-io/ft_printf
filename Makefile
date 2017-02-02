@@ -79,7 +79,7 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_strstr.o \
 				 ft_strsub.o \
 				 ft_strtrim.o \
-				 ft_tolower.o \ 
+				 ft_tolower.o \
 				 ft_tolower_str.o \
 				 ft_toupper.o \
 				 ft_toupper_str.o \
@@ -104,7 +104,8 @@ FT_PRINTF_COMPILED = ft_printf.o \
 					 write_hex.o \
 					 write_octal.o \
 					 write_signed_int.o \
-					 write_string.o
+					 write_string.o \
+					 write_unsigned_int.o
 
 COMPILED =			$(LIBFT_COMPILED) $(FT_PRINTF_COMPILED)
 

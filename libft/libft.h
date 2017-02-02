@@ -34,8 +34,8 @@ typedef struct		s_gnl
 	struct s_gnl	*next;
 }					t_gnl;
 
-char				*ft_toupper_temp(char *str);
-char				*ft_tolower_temp(char *str);
+char				*ft_toupper_str(char *str);
+char				*ft_tolower_str(char *str);
 char				*ft_itoa_base(int value, int base);
 size_t				ft_nbrlen(int nbr);
 int					get_next_line(int const fd, char **line);

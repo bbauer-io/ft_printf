@@ -26,9 +26,9 @@ void				write_conversion_substr(t_conversion *conversion,
 		write_octal(conversion, ap, format);
 	if (conversion->specifier == POINTER)
 		write_hex(conversion, ap, format);
-//	if (conversion->specifier == STRING)
-//		write_string(conversion, ap, format);
-//	if (conversion->specifier == CHAR)
-//		write_char(conversion, ap, format);
+	if (conversion->specifier == STRING)
+		write_string(conversion, ap, format);
+	if (conversion->specifier == CHAR)
+		write_char(conversion, ap, format);
 	return ;
 }
