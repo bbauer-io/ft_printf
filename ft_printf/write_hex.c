@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:50:02 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/31 15:41:51 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/02 19:28:43 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void				write_hex(t_conversion *conversion, va_list ap, t_format
 	draft = ft_itoa_base(value, 16);
 	if (!*draft)
 		draft = ft_strdup("0");
+	if (conversion->precision_set && conversion->specifier != POINTER)
+		apply_precision(conversion, &draft);
+	if (conversion->width)
+		apply_width(conversion, &draft);
 	if ((conversion->flags.hash && *draft != '0')
 										|| conversion->specifier == POINTER)
 		add_hex_prefix(&draft);

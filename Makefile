@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/01/31 15:38:20 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/02 19:04:01 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,9 @@ LIBFT_COMPILED = ft_atoi.o \
 				 get_next_line.o
 
 
-FT_PRINTF_COMPILED = ft_printf.o \
+FT_PRINTF_COMPILED = apply_precision.o \
+					 apply_width.o \
+					 ft_printf.o \
 					 ft_vprintf.o \
 					 read_flags.o \
 					 read_length.o \

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/31 12:04:50 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/02 19:04:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void				write_char(t_conversion *conversion, va_list ap,
 ** Here are a couple reusable helper functions for the write functions
 */
 
+void				apply_precision(t_conversion *conversion, char **draft);
+void				apply_width(t_conversion *conversion, char **draft);
 uintmax_t			get_unsigned_int_arg(t_conversion *conversion, va_list ap);
 
 #endif

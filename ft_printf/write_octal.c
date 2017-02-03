@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:53:29 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/31 15:14:09 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/02 19:28:56 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void				write_octal(t_conversion *conversion, va_list ap, t_format
 	draft = ft_itoa_base(value, 8);
 	if (conversion->flags.hash)
 		add_octal_prefix(&draft);
-//	if (ft_strlen(draft) < conversion->width)
-//		apply_padding(conversion, &draft);
+	if (conversion->precision_set)
+		apply_precision(conversion, &draft);
+	if (conversion->width)
+		apply_width(conversion, &draft);
 	format->chars_written += ft_strlen(draft);
 	ft_putstr(draft);
 }
