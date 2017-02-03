@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Apply precision, then prefix, then width(and justify from that function)
+*/
+
 #include "ft_printf.h"
 
 static void			add_hex_prefix(char **draft)
