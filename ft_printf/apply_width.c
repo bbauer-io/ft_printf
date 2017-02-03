@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:03 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/03 11:27:50 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/03 13:22:08 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,23 @@ static void			apply_width_str(t_conversion *conversion, char **draft)
 static void			apply_width_int(t_conversion *conversion, char **draft)
 {
 	char	*temp;
-	int		i;
 
 	if (ft_strlen(*draft) < conversion->width)
 	{
 		temp = *draft;
 		*draft = ft_strnew(conversion->width);
-		i = 0;
-		while (conversion->width > ft_strlen(temp) + i)
-			(*draft)[i++] = (conversion->flags.pad_with_zeros ? '0' : ' ');
-		ft_strcpy(&((*draft)[i]), temp);
+		if (conversion->flags.left_justify)
+		{
+			ft_strcpy(*draft, temp);
+			ft_memset(&(*draft)[ft_strlen(*draft)], ' ',
+										conversion->width - ft_strlen(*draft));
+		}
+		else
+		{
+			ft_memset(*draft, (conversion->flags.pad_with_zeros ? '0' : ' '),
+										conversion->width - ft_strlen(temp));
+			ft_strcpy(&(*draft)[conversion->width - ft_strlen(temp)], temp);
+		}
 		ft_memdel((void **)&temp);
 	}
 }

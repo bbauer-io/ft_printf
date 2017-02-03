@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:58 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/03 12:18:43 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/03 13:24:40 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void				write_char(t_conversion *conversion, va_list ap, t_format
 																	*format)
 {
-	char		c;
+	char		*draft;
 	wchar_t		d;
 
 	if (conversion->flags.hash)
@@ -28,8 +28,9 @@ void				write_char(t_conversion *conversion, va_list ap, t_format
 	}
 	else
 	{
-		c = va_arg(ap, int);
-		ft_putchar(c);
-		format->chars_written++;
+		draft = ft_strnew(1);
+		*draft = va_arg(ap, int);
+		apply_width(conversion, &draft);
+		format->chars_written += ft_strlen(draft);
 	}
 }
