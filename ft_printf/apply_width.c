@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:03 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/02 19:42:00 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/03 11:27:50 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,25 @@
 
 static void			apply_width_str(t_conversion *conversion, char **draft)
 {
-	if (conversion || draft)
-		return ;
+	char	*temp;
+
+	if (conversion->width > ft_strlen(*draft))
+	{
+		temp = *draft;
+		*draft = ft_strnew(conversion->width);
+		if (conversion->flags.left_justify)
+		{
+			ft_strcpy(*draft, temp);
+			ft_memset(&(*draft)[ft_strlen(temp)], ' ',
+										conversion->width - ft_strlen(temp));
+		}
+		else
+		{
+			ft_memset(*draft, ' ', conversion->width - ft_strlen(temp));
+			ft_strcpy(&(*draft)[conversion->width - ft_strlen(temp)], temp);
+		}
+		ft_memdel((void **)&temp);
+	}
 	return ;
 }
 

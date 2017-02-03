@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:14:23 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/02 19:39:47 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/03 10:26:25 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 static void			apply_precision_str(t_conversion *conversion, char **draft)
 {
-	if (conversion || draft)
-		return ;
+	char	*temp;
+
+	if (conversion->precision < ft_strlen(*draft))
+	{
+		temp = *draft;
+		*draft = ft_strndup(*draft, conversion->precision);
+		ft_memdel((void **)&temp);
+	}
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 15:22:38 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/02 19:48:07 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/03 11:55:01 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ int main()
 {
 	ft_printf("Strings:\n");
 	const char* s = "Hello";
-	ft_printf("\t[%10s]\n\t[%-10s]\n\t[%*s]\n\t[%-10.*s]\n\t[%-*.*s]\n", s, s, 10, s, 4, s, 10, 4, s);
+
+	ft_printf("theworst: [%-10.*s]\n", 4, s);
+	ft_printf("\t[%10s]\n\t[%-10s]\n\t[%*s]\n\t[%-10.*s]\n\t[%-*.*s]\n",
+					s,			s,		10, s,		4, s,		10, 4, s);
+	ft_printf("\t[%-10.4s]\n", s);
 
 	ft_printf("\nCharacters:\t%c %%\n", 65);
 
