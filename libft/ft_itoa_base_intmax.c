@@ -1,15 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_intmax.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 09:39:28 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/04 17:14:05 by bbauer           ###   ########.fr       */
+/*   Created: 2017/02/04 16:12:11 by bbauer            #+#    #+#             */
+/*   Updated: 2017/02/04 17:08:14 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
+#include <inttypes.h>
 #include "libft.h"
 
 /*
@@ -44,7 +46,7 @@ static void		generate_base_digit_array(char *arr)
 ** are saved to the indices array.
 */
 
-static int		calc_indices(int *indices, unsigned int value, int base)
+static int		calc_indices(int *indices, uintmax_t value, int base)
 {
 	int		i;
 
@@ -62,7 +64,8 @@ static int		calc_indices(int *indices, unsigned int value, int base)
 ** array to create the string which will be returned;
 */
 
-static char		*create_base_str(char *digits, int *indices, int i, int value)
+static char		*create_base_str(char *digits, int *indices, int i,
+																intmax_t value)
 {
 	int		j;
 	char	*result;
@@ -82,12 +85,12 @@ static char		*create_base_str(char *digits, int *indices, int i, int value)
 ** specified, up to 16.
 */
 
-char			*ft_itoa_base(int value, int base)
+char			*ft_itoa_base_intmax(intmax_t value, int base)
 {
-	char			base_digits[16];
-	int				conversion_index[64];
-	int				i;
-	unsigned int	abs_val;
+	char		base_digits[16];
+	int			conversion_index[64];
+	int			i;
+	uintmax_t	abs_val;
 
 	abs_val = (value < 0 ? -value : value);
 	generate_base_digit_array(base_digits);
