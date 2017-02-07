@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:12:24 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/04 10:32:15 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 17:33:05 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int				read_precision(t_conversion *conversion, va_list ap,
 		if (format->str[format->index] == '*')
 		{
 			conversion->precision = va_arg(ap, unsigned int);
+			conversion->precision_set = 1;
 			format->index++;
 			return (GOOD);
 		}
