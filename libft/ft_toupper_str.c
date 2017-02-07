@@ -15,7 +15,7 @@ char		*ft_toupper_str(char *str)
 	temp = str;
 	while (*temp != '\0')
 	{
-		if (*temp >= 97 && *str <= 122)
+		if (*temp >= 97 && *temp <= 122)
 			*temp -= 32;
 		temp++;
 	}
