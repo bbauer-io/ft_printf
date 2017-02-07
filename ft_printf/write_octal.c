@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:53:29 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/02 19:28:56 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 19:14:43 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void				write_octal(t_conversion *conversion, va_list ap, t_format
 		apply_precision(conversion, &draft);
 	if (conversion->width)
 		apply_width(conversion, &draft);
+	if (conversion->flags.pos_values_begin_w_space
+										|| conversion->flags.show_sign)
+		apply_prefix(conversion, &draft);
 	format->chars_written += ft_strlen(draft);
 	ft_putstr(draft);
 }
