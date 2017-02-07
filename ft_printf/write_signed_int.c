@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/02 19:45:34 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 18:14:34 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 		apply_precision(conversion, &draft);
 	if (conversion->width)
 		apply_width(conversion, &draft);
+	if (nbr >= 0 &&
+	(conversion->flags.pos_values_begin_w_space || conversion->flags.show_sign))
+		apply_prefix(conversion, &draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
 	return ;

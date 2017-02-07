@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/04 17:11:08 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/06 18:06:44 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ LIBFT_COMPILED = ft_atoi.o \
 
 
 FT_PRINTF_COMPILED = apply_precision.o \
+					 apply_prefix.o \
 					 apply_width.o \
 					 ft_printf.o \
 					 ft_vprintf.o \
