@@ -40,7 +40,7 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 	char		*draft;
 
 	nbr = get_signed_int_arg(conversion, ap);
-	draft = ft_itoa(nbr);
+	draft = ft_itoa_base_intmax(nbr, 10);
 	if (conversion->precision_set)
 		apply_precision(conversion, &draft);
 	if (conversion->width)
