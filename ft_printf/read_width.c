@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:11:52 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/04 17:15:59 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 15:04:19 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,17 @@
 
 int			read_width(t_conversion *conversion, va_list ap, t_format *format)
 {
+	int		holder;
+
 	if (format->str[format->index] == '*')
 	{
-		conversion->width = va_arg(ap, unsigned int);
+		holder = va_arg(ap, int);
+		if (holder < 0)
+		{
+			holder = -holder;
+			conversion->flags.left_justify = 1;
+		}
+		conversion->width = holder;
 		format->index++;
 	}
 	else if (ft_isdigit(format->str[format->index]))
