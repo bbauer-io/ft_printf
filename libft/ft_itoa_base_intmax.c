@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 16:12:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/04 17:08:14 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 19:49:12 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char			*ft_itoa_base_intmax(intmax_t value, int base)
 	int			i;
 	uintmax_t	abs_val;
 
+	if (base < 2 || base > 16)
+		return (NULL);
 	abs_val = (value < 0 ? -value : value);
 	generate_base_digit_array(base_digits);
 	i = calc_indices(conversion_index, abs_val, base);

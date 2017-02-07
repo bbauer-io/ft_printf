@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/04 16:14:46 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/06 19:43:57 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct		s_gnl
 	struct s_gnl	*next;
 }					t_gnl;
 
+
+char				*ft_itoa_base_uintmax(uintmax_t value, int base);
 char				*ft_itoa_base_intmax(intmax_t value, int base);
 void				ft_putnbr_llong(long long n);
 char				*ft_toupper_str(char *str);
