@@ -37,8 +37,6 @@ void				write_hex(t_conversion *conversion, va_list ap, t_format
 
 	value = get_unsigned_int_arg(conversion, ap);
 	draft = ft_itoa_base_uintmax(value, 16);
-	if (!*draft)
-		draft = ft_strdup("0");
 	if (conversion->precision_set && conversion->specifier != POINTER)
 		apply_precision(conversion, &draft);
 	if (conversion->width)

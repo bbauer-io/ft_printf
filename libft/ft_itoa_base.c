@@ -89,6 +89,8 @@ char			*ft_itoa_base(int value, int base)
 	int				i;
 	unsigned int	abs_val;
 
+	if (value == 0)
+		return (ft_strdup("0"));
 	if (base < 2 || base > 16)
 		return (NULL);
 	abs_val = (value < 0 ? -value : value);

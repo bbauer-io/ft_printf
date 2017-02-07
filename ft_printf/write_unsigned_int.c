@@ -30,3 +30,23 @@ uintmax_t		get_unsigned_int_arg(t_conversion *conversion, va_list ap)
 		nbr = va_arg(ap, size_t);
 	return (nbr);
 }
+
+void				write_unsigned_int(t_conversion *conversion, va_list ap,
+															t_format *format)
+{
+	uintmax_t	nbr;
+	char		*draft;
+
+	nbr = get_unsigned_int_arg(conversion, ap);
+	draft = ft_itoa_base_uintmax(nbr, 10);
+	if (conversion->precision_set)
+		apply_precision(conversion, &draft);
+	if (conversion->width)
+		apply_width(conversion, &draft);
+	if (conversion->flags.pos_values_begin_w_space
+											|| conversion->flags.show_sign)
+		apply_prefix(conversion, &draft);
+	ft_putstr(draft);
+	format->chars_written += ft_strlen(draft);
+	return ;
+}

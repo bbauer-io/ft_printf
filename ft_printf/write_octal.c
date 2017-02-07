@@ -33,8 +33,6 @@ void				write_octal(t_conversion *conversion, va_list ap, t_format
 
 	value = get_unsigned_int_arg(conversion, ap);
 	draft = ft_itoa_base_uintmax(value, 8);
-	if (!*draft)
-		draft = ft_strdup("0");
 	if (conversion->flags.hash)
 		add_octal_prefix(&draft);
 	if (conversion->precision_set)

@@ -88,6 +88,8 @@ char			*ft_itoa_base_uintmax(uintmax_t value, int base)
 	int			conversion_index[64];
 	int			i;
 
+	if (value == 0)
+		return (ft_strdup("0"));
 	if (base < 2 || base > 16)
 		return (NULL);
 	generate_base_digit_array(base_digits);
