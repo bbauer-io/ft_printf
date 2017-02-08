@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 18:14:34 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/08 14:41:44 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static intmax_t		get_signed_int_arg(t_conversion *conversion, va_list ap)
 	return (nbr);
 }
 
-
-// PRETTY SURE I NEED INTMAX ITOA && PUTNBR
 void				write_signed_int(t_conversion *conversion, va_list ap,
 															t_format *format)
 {

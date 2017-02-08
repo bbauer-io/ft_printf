@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:42:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 19:11:11 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/08 15:06:45 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,72 @@ static void		apply_prefix_hex(t_conversion *conversion, char **draft)
 }
 
 
+static void		apply_space_prefix(char **draft)
+{
+	int		i;
+	char	prefix_char;
+	char	*temp;
+
+	prefix_char = ' ';
+	i = 0;
+	while (!ft_isdigit((*draft)[i]) && (*draft)[i] != '\0')
+		i++;
+	if (i > 0 && (*draft)[i - 1] == ' ')
+		return ;
+	else
+	{
+		temp = *draft;
+		*draft = ft_strnew(ft_strlen(*draft));
+		**draft = prefix_char;
+		ft_strcpy(&(*draft)[1], temp);
+		ft_memdel((void **)&temp);
+	}
+	return ;
+}
+
+
+static void		apply_sign_prefix(char **draft)
+{
+	int		i;
+	char	prefix_char;
+	char	*temp;
+
+	prefix_char = '+';
+	i = 0;
+	while (!ft_isdigit((*draft)[i]) && (*draft)[i] != '\0')
+		i++;
+	if (i > 0 && (*draft)[i] != '0')
+		i--;
+	if ((*draft)[i] == '0' || (*draft)[i] == ' ')
+		(*draft)[i] = prefix_char;
+	else
+	{
+		temp = *draft;
+		*draft = ft_strnew(ft_strlen(*draft));
+		**draft = prefix_char;
+		ft_strcpy(&(*draft)[1], temp);
+		ft_memdel((void **)&temp);
+	}
+	return ;
+}
+
+void			apply_prefix(t_conversion *conversion, char **draft)
+{
+	if (conversion->specifier == S_DECIMAL
+						|| conversion->specifier == U_DECIMAL)
+	{
+		if (conversion->flags.show_sign)
+			apply_sign_prefix(draft);
+		if (conversion->flags.pos_values_begin_w_space)
+			apply_space_prefix(draft);
+	}
+	if (conversion->specifier == HEX_UPPER
+						|| conversion->specifier == HEX_LOWER)
+		apply_prefix_hex(conversion, draft);
+}
+
+/*
+** BACKUP - works great for '+' flags
 
 static void		apply_prefix_int(t_conversion *conversion, char **draft)
 {
@@ -62,12 +128,4 @@ static void		apply_prefix_int(t_conversion *conversion, char **draft)
 	return ;
 }
 
-void			apply_prefix(t_conversion *conversion, char **draft)
-{
-	if (conversion->specifier == S_DECIMAL
-						|| conversion->specifier == U_DECIMAL)
-		apply_prefix_int(conversion, draft);
-	if (conversion->specifier == HEX_UPPER
-						|| conversion->specifier == HEX_LOWER)
-		apply_prefix_hex(conversion, draft);
-}
+*/
