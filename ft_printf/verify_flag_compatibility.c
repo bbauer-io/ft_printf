@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 20:03:25 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 14:27:27 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/08 14:31:24 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static int			pointer_size_specified(t_conversion *conversion)
 {
 	if (conversion->specifier == POINTER && conversion->length != DEFAULT)
 		return (ERROR);
-	if (conversion->specifier == POINTER)
-		conversion->length = LL;
 	return (GOOD);
 }
 
