@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:50:02 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 12:01:17 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/08 14:25:06 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				write_hex(t_conversion *conversion, va_list ap, t_format
 	uintmax_t	value;
 
 	value = get_unsigned_int_arg(conversion, ap);
-	draft = ft_itoa_base_ull(value, 16);
+	draft = ft_itoa_base_uintmax(value, 16);
 	if (conversion->precision_set && conversion->specifier != POINTER)
 		apply_precision(conversion, &draft);
 	if (conversion->width)
