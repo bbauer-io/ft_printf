@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/06 19:50:48 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/08 12:00:40 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_itoa_base.o \
 				 ft_itoa_base_intmax.o \
 				 ft_itoa_base_uintmax.o \
+				 ft_itoa_base_ull.o \
 				 ft_lstadd.o \
 				 ft_lstdel.o \
 				 ft_lstdelone.o \
