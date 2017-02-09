@@ -18,7 +18,7 @@ uintmax_t		get_unsigned_int_arg(t_conversion *conversion, va_list ap)
 
 	if (conversion->specifier == POINTER)
 	{
-		nbr = va_arg(ap, unsigned long long);
+		nbr = (unsigned long)va_arg(ap, void *);
 		return (nbr);
 	}
 	if (conversion->length == HH)
