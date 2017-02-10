@@ -20,15 +20,18 @@ void				write_conversion_substr(t_conversion *conversion,
 	if (conversion->specifier == U_DECIMAL)
 		write_unsigned_int(conversion, ap, format);
 	if (conversion->specifier == HEX_UPPER
-					|| conversion->specifier == HEX_LOWER)
+			|| conversion->specifier == HEX_LOWER
+			|| conversion->specifier == POINTER)
 		write_hex(conversion, ap, format);
 	if (conversion->specifier == OCTAL)
 		write_octal(conversion, ap, format);
-	if (conversion->specifier == POINTER)
-		write_hex(conversion, ap, format);
-	if (conversion->specifier == STRING)
+	if (conversion->specifier == STRING && conversion->length >= L)
+		write_wstring(conversion, ap, format);
+	else if (conversion->specifier == STRING)
 		write_string(conversion, ap, format);
-	if (conversion->specifier == CHAR)
+	if (conversion->specifier == CHAR && conversion->length >= L)
+		write_wchar(conversion, ap, format);
+	else if (conversion->specifier == CHAR)
 		write_char(conversion, ap, format);
 	return ;
 }

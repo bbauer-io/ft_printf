@@ -112,6 +112,11 @@ void				write_string(t_conversion *conversion, va_list ap,
 											t_format *format);
 void				write_char(t_conversion *conversion, va_list ap,
 											t_format *format);
+void				write_wchar(t_conversion *conversion, va_list ap,
+											t_format *format);
+void				write_wstring(t_conversion *conversion, va_list ap,
+											t_format *format);
+
 
 /*
 ** Here are a couple reusable helper functions for the write functions
