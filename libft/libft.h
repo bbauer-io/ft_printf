@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/16 17:00:45 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/16 22:36:17 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ typedef char		t_utf8;
 size_t				ft_wcharbits(wchar_t);
 size_t				ft_wcharsize_utf8(wchar_t c);
 size_t				ft_wstrsize_utf8(const wchar_t *wstr);
+size_t				ft_wstrnsize_utf8(const wchar_t *wstr, size_t n);
 wchar_t				ft_utf8charencode(wchar_t c);
 size_t				ft_utf8charsize(wchar_t c);
 int					ft_wctomb(char *s, wchar_t wc);
-
+t_utf8				*ft_utf8strnencode(const wchar_t *wstr, size_t n);
 t_utf8				*ft_utf8strencode(const wchar_t *wstr);
 
 char				*ft_itoa_base_ull(unsigned long long value, int base);
