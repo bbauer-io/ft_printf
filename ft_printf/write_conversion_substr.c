@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 07:57:15 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/31 12:05:24 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 00:06:56 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void				write_conversion_substr(t_conversion *conversion,
 		write_hex(conversion, ap, format);
 	if (conversion->specifier == OCTAL)
 		write_octal(conversion, ap, format);
-	if (conversion->specifier == STRING && conversion->length >= L)
-		write_wstring(conversion, ap, format);
+//	if (conversion->specifier == STRING && conversion->length >= L)
+//		write_wstring(conversion, ap, format);
 	else if (conversion->specifier == STRING)
 		write_string(conversion, ap, format);
 	if (conversion->specifier == CHAR && conversion->length >= L)

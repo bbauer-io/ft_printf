@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/30 07:30:30 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 00:02:49 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		main(void)
 	ft_printf ("Preceding with blanks: %10d \n", 1977);
 	ft_printf ("Preceding with zeros: %010d \n", 1977);
 	ft_printf ("Some different radices: %d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
-	ft_printf ("floats: %4.2f %+.0e %E \n", 3.1416, 3.1416, 3.1416);
 	ft_printf ("Width trick: %*d \n", 5, 10);
 	ft_printf ("%s \n", "A string");
 	return (0);
