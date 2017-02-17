@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/16 22:36:17 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 00:00:08 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef char		t_utf8;
 ** wchar/utf-8 related functions
 */
 
+void				*ft_wchar_memset(void *b, wchar_t c, size_t len);
+wchar_t				*ft_wstrcpy(wchar_t *dst, wchar_t const *src);
+size_t				ft_wstrlen(wchar_t const *str);
 size_t				ft_wcharbits(wchar_t);
 size_t				ft_wcharsize_utf8(wchar_t c);
 size_t				ft_wstrsize_utf8(const wchar_t *wstr);

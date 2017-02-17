@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/08 12:00:40 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/16 23:53:30 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,16 +86,29 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_tolower_str.o \
 				 ft_toupper.o \
 				 ft_toupper_str.o \
+				 ft_utf8charencode.o \
+				 ft_utf8charsize.o \
+				 ft_utf8strencode.o \
+				 ft_utf8strnencode.o \
+				 ft_wchar_memset.o \
+				 ft_wcharbits.o \
+				 ft_wcharsize_utf8.o \
+				 ft_wctomb.o \
 				 ft_wrdcnt.o \
 				 ft_wrdcntd.o \
 				 ft_wrdlen.o \
 				 ft_wrdsplit.o \
+				 ft_wstrcpy.o \
+				 ft_wstrlen.o \
+				 ft_wstrnsize_utf8.o \
+				 ft_wstrsize_utf8.o \
 				 get_next_line.o
 
 
 FT_PRINTF_COMPILED = apply_precision.o \
 					 apply_prefix.o \
 					 apply_width.o \
+					 apply_width_wchar.o \
 					 ft_printf.o \
 					 ft_vprintf.o \
 					 read_flags.o \
@@ -111,7 +124,8 @@ FT_PRINTF_COMPILED = apply_precision.o \
 					 write_octal.o \
 					 write_signed_int.o \
 					 write_string.o \
-					 write_unsigned_int.o
+					 write_unsigned_int.o \
+					 write_wchar.o
 
 COMPILED =			$(LIBFT_COMPILED) $(FT_PRINTF_COMPILED)
 
