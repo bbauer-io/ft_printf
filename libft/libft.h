@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 11:59:34 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/16 17:00:45 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <wchar.h>
 
 # define BUFF_SIZE 1024
 
@@ -33,6 +34,21 @@ typedef struct		s_gnl
 	char			*file;
 	struct s_gnl	*next;
 }					t_gnl;
+
+typedef char		t_utf8;
+
+/*
+** wchar/utf-8 related functions
+*/
+
+size_t				ft_wcharbits(wchar_t);
+size_t				ft_wcharsize_utf8(wchar_t c);
+size_t				ft_wstrsize_utf8(const wchar_t *wstr);
+wchar_t				ft_utf8charencode(wchar_t c);
+size_t				ft_utf8charsize(wchar_t c);
+int					ft_wctomb(char *s, wchar_t wc);
+
+t_utf8				*ft_utf8strencode(const wchar_t *wstr);
 
 char				*ft_itoa_base_ull(unsigned long long value, int base);
 char				*ft_itoa_base_uintmax(uintmax_t value, int base);

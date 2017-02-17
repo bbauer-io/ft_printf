@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 12:11:54 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/15 18:50:38 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/16 16:43:41 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <stdio.h>
+#include <wchar.h>
+
 typedef char	t_utf8;
+
+int				ft_wctomb(char *s, wchar_t wc);
 
 char	*ft_itoa_base_uintmax(uintmax_t value, int base);
 
@@ -39,7 +43,7 @@ void	*ft_memcpy(void *dst, void const *src, size_t n)
 ** Count number of bits needed to represent a unicode code point.
 */
 
-size_t			ft_wchrbits(wchar_t c)
+size_t			ft_wcharbits(wchar_t c)
 {
 	size_t		i;
 
@@ -57,11 +61,11 @@ size_t			ft_wchrbits(wchar_t c)
 ** point in UTF-8 format.
 */
 
-size_t			ft_wchrsize_utf8(wchar_t c)
+size_t			ft_wcharsize_utf8(wchar_t c)
 {
 	size_t		bits;
 
-	bits = ft_wchrbits(c);
+	bits = ft_wcharbits(c);
 	if (bits <= 7)
 		return (1);
 	if (bits <= 11)
@@ -88,7 +92,7 @@ size_t			ft_wstrsize_utf8(const wchar_t *wstr)
 	size = 0;
 	while (*wstr != '\0')
 	{
-		size += ft_wchrsize_utf8(*wstr);
+		size += ft_wcharsize_utf8(*wstr);
 		wstr++;
 	}
 	return (size);
@@ -98,21 +102,25 @@ size_t			ft_wstrsize_utf8(const wchar_t *wstr)
 ** Encodes a wchar_t to UTF-8 or returns the "substitute" character.
 */
 
-wchar_t			ft_utf8chrencode(wchar_t c)
+wchar_t			ft_utf8charencode(wchar_t c)
 {
-	size_t		size;
+	size_t				size;
+	unsigned int		uc;
 
-	size = ft_wchrbits(c);
+	uc = c;
+	size = ft_wcharbits(c);
 	if (size <= 7)
 		return (c);
 	if (size <= 11)
-		return (((c >> 6) << 8) | ((c << 26) >> 26) | 0xC080);
+	{
+		return (((uc >> 6) << 8) | ((uc << 26) >> 26) | 0xC080);
+	}
 	if (size <= 16)
-		return (((c >> 12) << 14) | (((c >> 6) << 26) >> 18)
-			| ((c << 26) >> 26) | 0xE08080);
+		return ((((uc >> 12) << 28) >> 12) | (((uc >> 6) << 26) >> 18)
+			| ((uc << 26) >> 26) | 0xE08080);
 	if (size <= 21)
-		return (((c >> 18) << 24) | (((c >> 12) << 26) >> 10)
-			| (((c >> 6) << 26) >> 18) | ((c << 26) >> 26) | 0xF0808080);
+		return  ((((uc >> 18) << 29) >> 5) | (((uc >> 12) << 26) >> 10)
+			| (((uc >> 6) << 26) >> 18) | ((uc << 26) >> 26) | 0xF0808080);
 	return (0x1A);
 }
 
@@ -123,7 +131,6 @@ wchar_t			ft_utf8chrencode(wchar_t c)
 t_utf8			*ft_utf8encode(const wchar_t *wstr)
 {
 	size_t		i;
-	size_t		size;
 	size_t		len;
 	wchar_t		c;
 	t_utf8		*utf8;
@@ -135,10 +142,8 @@ t_utf8			*ft_utf8encode(const wchar_t *wstr)
 			i = 0;
 			while (i < len)
 			{
-				c = ft_utf8chrencode(*wstr);
-				size = ft_wchrsize_utf8(c);
-				ft_memcpy(&utf8[i], &c, size);
-				i += size;
+				c = ft_utf8charencode(*wstr);
+				i += ft_wctomb(&utf8[i], c);
 				wstr++;
 			}
 			utf8[i] = '\0';
@@ -147,41 +152,20 @@ t_utf8			*ft_utf8encode(const wchar_t *wstr)
 	return (NULL);
 }
 
-/*
-void			ft_putwstr_utf8(t_utf8 *s)
-{
-	
-}
-*/
-size_t		ft_utf8chrsize(wchar_t c)
+size_t		ft_utf8charsize(wchar_t c)
 {
 	unsigned int	f;
 
 	f = c;
-	if (f < 0xFF)
+	if (f <= 0xFF)
 		return (1);
-	if (f < 0xFFFF)
+	if (f <= 0xFFFF)
 		return (2);
-	if (f < 0xFFFFFF)
+	if (f <= 0xFFFFFF)
 		return (3);
-	if (f < 0xFFFFFFFF)
+	if (f <= 0xFFFFFFFF)
 		return (4);
 	return (0);
-}
-
-void			ft_putwchr(wchar_t c)
-{
-	c = ft_utf8chrencode(c);
-	
-	write(1, &c, sizeof(wchar_t));
-
-	//	write(1, &c, ft_utf8chrsize(c));
-}
-
-void			ft_putwstr(wchar_t *s)
-{
-	while (*s != '\n')
-		ft_putwchr(*s++);
 }
 
 void	ft_putchar(char c)
@@ -195,12 +179,68 @@ void	ft_putstr(char *s)
 		 ft_putchar(*s++);
 }
 
+int				ft_wctomb(char *s, wchar_t wc)
+{
+	int			len;
+	size_t		i;
+
+	i = 0;
+	len = ft_utf8charsize(wc);
+	if (len >= 4)
+		s[i++] = (0xFF000000 & wc) >> 24;
+	if (len >= 3)
+		s[i++] = (0xFF0000 & wc) >> 16;
+	if (len >= 2)
+		s[i++] = (0xFF00 & wc) >> 8;
+	if (len >= 1)
+		s[i++] = 0xFF & wc;
+	return (len);
+}
+/*
+void			ft_putwchr(wchar_t c)
+{
+	c = ft_utf8charencode(c);
+	write(1, &c, sizeof(wchar_t));
+
+	//	write(1, &c, ft_utf8chrsize(c));
+}*/
+
 int		main(void)
 {
 	wchar_t		derp = L'Ξ';
-	wchar_t		doublederp;
-	wchar_t		reversederp;
-	char		a[6];
+
+	wchar_t		*str = L"我是一只猫。";
+	
+	
+	char		*a;
+	int			i;
+	char		*b;
+
+	a = (char *)malloc(sizeof(char) * 6);
+	a[0] = 0xCE;
+	a[1] = 0x9E;
+	a[2] = 0xCE;
+	a[3] = 0x9E;
+	a[4] = 0xCE;
+	a[5] = 0x9E;
+
+	derp = ft_utf8charencode(derp);
+	i = 0;
+	while (i < 6)
+		i += ft_wctomb(&a[i], derp);
+	setlocale(LC_ALL, "en_US.UTF-8");
+
+	b = ft_utf8encode(str);
+	write(1, a, 6);
+	printf("printf (not mine):\t%C\n", L'Ξ');
+	write(1, b, 18);
+	ft_putchar('\n');
+	ft_putstr(b);
+}
+/*
+int             main(void)
+{
+	char	a[6];
 
 	a[0] = 0xCE;
 	a[1] = 0x9E;
@@ -209,31 +249,7 @@ int		main(void)
 	a[4] = 0xCE;
 	a[5] = 0x9E;
 
-	doublederp = ft_utf8chrencode(derp);
-	doublederp = doublederp | (doublederp << 16);
-	reversederp = ft_utf8chrencode(derp);
-	reversederp = (reversederp >> 8) | ((reversederp << 24) >> 16);
-
-	ft_putchar(MB_CUR_MAX + '0');
 	setlocale(LC_ALL, "en_US.UTF-8");
-	ft_putchar(MB_CUR_MAX + '0');
-	ft_putstr("Locale is set:\t\t");
-	ft_putstr(setlocale(LC_ALL, NULL));
-	ft_putstr("\nUnicode code point:\t");
-	ft_putstr(ft_itoa_base_uintmax(derp, 16));
-	ft_putstr("\nConverted UTF-8 binary:\t");
-	ft_putstr(ft_itoa_base_uintmax(ft_utf8chrencode(derp), 2));
-	ft_putstr("\nAnd HEX:\t\t");
-	ft_putstr(ft_itoa_base_uintmax(ft_utf8chrencode(derp), 16));
-	ft_putstr("\nResult of writing:\t");
-	write(1, &doublederp, 4);
-	ft_putstr("\n");
-	ft_putstr(ft_itoa_base_uintmax(doublederp, 2));
-	ft_putstr("\n");
-	write(1, &reversederp, 4);
-	ft_putstr("\n");
-	ft_putstr(ft_itoa_base_uintmax(reversederp, 2));
-	ft_putchar('\n');
 	write(1, &a, 6);
 	printf("printf (not mine):\t%C\n", L'Ξ');
-}
+}*/
