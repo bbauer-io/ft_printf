@@ -6,11 +6,12 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/07 07:32:08 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 00:25:22 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
+#include <locale.h>
 
 int		main(void)
 {
@@ -21,6 +22,9 @@ int		main(void)
 	
 	ft_printf("%x\n", -42);
 	
+	setlocale(LC_ALL, "");
+	ft_printf("%S", L"Á±≥\n");
+
 	ft_printf("holy crapola!\n");
 	ft_printf("holy crapola %d: shitbats!\n", 2);
 	ft_printf("holy crapola %d: %dxtriple shitbats!\n", 3, 3);
