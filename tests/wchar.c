@@ -6,18 +6,36 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 00:45:03 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 01:03:37 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
 #include <locale.h>
+#include <stdio.h>
 
 int		main(void)
 {
 
 	setlocale(LC_ALL, "");
+	ft_printf("WCHARS:\n");
 
+	ft_printf("%C", L'猫');
+	ft_printf("\n");
+	ft_printf("%C", L'δ');
+	ft_printf("\n");
+	ft_printf("%C", L'요');
+	ft_printf("\n");
+	ft_printf("%C", L'莨');
+	ft_printf("\n");
+	ft_printf("%C", L'ي');
+	ft_printf("\n");
+	ft_printf("%C", 0);
+	printf("\n%C", 0);
+	ft_printf("\n");
+
+
+	ft_printf("\nWSTRINGS:\n");
 	ft_printf("%S", L"米");
 	ft_printf("\n");
 	ft_printf("%S", L"Á±≥");

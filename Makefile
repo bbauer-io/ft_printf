@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/17 00:51:01 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/17 01:42:12 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_wrdsplit.o \
 				 ft_wstrcpy.o \
 				 ft_wstrlen.o \
+				 ft_wstrndup.o \
 				 ft_wstrnsize_utf8.o \
 				 ft_wstrsize_utf8.o \
 				 get_next_line.o
@@ -126,7 +127,8 @@ FT_PRINTF_COMPILED = apply_precision.o \
 					 write_signed_int.o \
 					 write_string.o \
 					 write_unsigned_int.o \
-					 write_wchar.o
+					 write_wchar.o \
+					 write_wstring.o
 
 COMPILED =			$(LIBFT_COMPILED) $(FT_PRINTF_COMPILED)
 

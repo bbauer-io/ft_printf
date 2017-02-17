@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/16 23:23:36 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 01:46:09 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void				write_wchar(t_conversion *conversion, va_list ap,
 void				write_wstring(t_conversion *conversion, va_list ap,
 											t_format *format);
 
-
 /*
 ** Here are a couple reusable helper functions for the write functions
 */
@@ -125,6 +124,8 @@ void				write_wstring(t_conversion *conversion, va_list ap,
 void				apply_precision(t_conversion *conversion, char **draft);
 void				apply_width(t_conversion *conversion, char **draft);
 void				apply_width_wchar(t_conversion *conversion,
+											wchar_t **draft);
+void				apply_precision_wstr(t_conversion *conversion,
 											wchar_t **draft);
 void				apply_prefix(t_conversion *conversion, char **draft);
 uintmax_t			get_unsigned_int_arg(t_conversion *conversion, va_list ap);

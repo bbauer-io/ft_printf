@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:14:23 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/03 10:26:25 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 01:45:28 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ static void			apply_precision_int(t_conversion *conversion, char **draft)
 		while (conversion->precision > ft_strlen(temp) + i)
 			(*draft)[i++] = '0';
 		ft_strcpy(&((*draft)[i]), temp);
+		ft_memdel((void **)&temp);
+	}
+	return ;
+}
+
+void				apply_precision_wstr(t_conversion *conversion,
+															wchar_t **draft)
+{
+	wchar_t	*temp;
+
+	if (conversion->precision < ft_wstrlen(*draft))
+	{
+		temp = *draft;
+		*draft = ft_wstrndup(*draft, conversion->precision);
 		ft_memdel((void **)&temp);
 	}
 	return ;
