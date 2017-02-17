@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/16 23:53:30 by bbauer           ###   ########.fr        #
+#    Updated: 2017/02/17 00:51:01 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_wchar_memset.o \
 				 ft_wcharbits.o \
 				 ft_wcharsize_utf8.o \
+				 ft_wstrdup.o \
 				 ft_wctomb.o \
 				 ft_wrdcnt.o \
 				 ft_wrdcntd.o \
