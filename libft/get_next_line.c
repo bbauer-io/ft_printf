@@ -6,13 +6,13 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 15:55:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/12 13:50:01 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:35:41 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_gnl		*find_fd_in_list(int const fd, t_gnl *list)
+t_gnl			*find_fd_in_list(int const fd, t_gnl *list)
 {
 	if (list)
 		while (list->fd != fd && list->next)

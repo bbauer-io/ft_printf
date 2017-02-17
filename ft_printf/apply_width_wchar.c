@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 23:25:46 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/16 23:58:52 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:27:09 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void			apply_width_wint(t_conversion *conversion, wchar_t **draft)
 		if (conversion->flags.left_justify)
 		{
 			ft_wstrcpy(*draft, temp);
-
 			ft_wchar_memset(&(*draft)[ft_wstrlen(*draft)], ' ',
 										conversion->width - ft_wstrlen(*draft));
 		}

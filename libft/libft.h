@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 01:41:27 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:37:33 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
 
 typedef struct		s_gnl
 {
@@ -46,7 +45,7 @@ wchar_t				*ft_wstrdup(wchar_t *str);
 void				*ft_wchar_memset(void *b, wchar_t c, size_t len);
 wchar_t				*ft_wstrcpy(wchar_t *dst, wchar_t const *src);
 size_t				ft_wstrlen(wchar_t const *str);
-size_t				ft_wcharbits(wchar_t);
+size_t				ft_wcharbits(wchar_t c);
 size_t				ft_wcharsize_utf8(wchar_t c);
 size_t				ft_wstrsize_utf8(const wchar_t *wstr);
 size_t				ft_wstrnsize_utf8(const wchar_t *wstr, size_t n);

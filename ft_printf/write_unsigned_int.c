@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:25:50 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 14:33:00 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:28:28 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ uintmax_t		get_unsigned_int_arg(t_conversion *conversion, va_list ap)
 	return (nbr);
 }
 
-void				write_unsigned_int(t_conversion *conversion, va_list ap,
+void			write_unsigned_int(t_conversion *conversion, va_list ap,
 															t_format *format)
 {
 	uintmax_t	nbr;
@@ -53,5 +53,6 @@ void				write_unsigned_int(t_conversion *conversion, va_list ap,
 		apply_prefix(conversion, &draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
+	ft_memdel((void **)&draft);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:50:02 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 14:25:06 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:41:55 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void			add_hex_prefix(char **draft)
 	return ;
 }
 
-void				write_hex(t_conversion *conversion, va_list ap, t_format
-																	*format)
+void				write_hex(t_conversion *conversion, va_list ap,
+															t_format *format)
 {
 	char		*draft;
 	uintmax_t	value;
@@ -51,4 +51,5 @@ void				write_hex(t_conversion *conversion, va_list ap, t_format
 		ft_tolower_str(draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
+	ft_memdel((void **)&draft);
 }

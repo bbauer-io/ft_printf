@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/08 14:41:44 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:18:43 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 		apply_prefix(conversion, &draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
+	ft_memdel((void **)&draft);
 	return ;
 }

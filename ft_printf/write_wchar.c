@@ -6,14 +6,14 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 22:39:43 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 00:52:04 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:42:31 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				write_wchar(t_conversion *conversion, va_list ap, t_format
-																	*format)
+void				write_wchar(t_conversion *conversion, va_list ap,
+															t_format *format)
 {
 	wchar_t		*draft;
 	char		*utf8_draft;
@@ -29,5 +29,7 @@ void				write_wchar(t_conversion *conversion, va_list ap, t_format
 		utf8_draft = ft_utf8strencode(draft);
 		ft_putstr(utf8_draft);
 		format->chars_written += ft_wstrlen(draft);
+		ft_memdel((void **)&draft);
+		ft_memdel((void **)&utf8_draft);
 	}
 }

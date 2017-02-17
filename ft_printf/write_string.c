@@ -6,14 +6,14 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:32 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 17:22:06 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:41:19 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				write_string(t_conversion *conversion, va_list ap, t_format
-																	*format)
+void				write_string(t_conversion *conversion, va_list ap,
+															t_format *format)
 {
 	char	*draft;
 
@@ -26,5 +26,6 @@ void				write_string(t_conversion *conversion, va_list ap, t_format
 		apply_width(conversion, &draft);
 	ft_putstr(draft);
 	format->chars_written += ft_strlen(draft);
+	ft_memdel((void **)&draft);
 	return ;
 }

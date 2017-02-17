@@ -6,16 +6,15 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:53:29 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 19:53:50 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/02/17 02:40:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
 static void			add_octal_prefix(char **draft)
 {
-	char			*temp;
+	char		*temp;
 
 	temp = *draft;
 	*draft = ft_strnew(ft_strlen(*draft) + 1);
@@ -25,11 +24,11 @@ static void			add_octal_prefix(char **draft)
 	return ;
 }
 
-void				write_octal(t_conversion *conversion, va_list ap, t_format
-																		*format)
+void				write_octal(t_conversion *conversion, va_list ap,
+															t_format *format)
 {
-	char			*draft;
-	uintmax_t		value;
+	char		*draft;
+	uintmax_t	value;
 
 	value = get_unsigned_int_arg(conversion, ap);
 	draft = ft_itoa_base_uintmax(value, 8);
@@ -44,4 +43,5 @@ void				write_octal(t_conversion *conversion, va_list ap, t_format
 		apply_prefix(conversion, &draft);
 	format->chars_written += ft_strlen(draft);
 	ft_putstr(draft);
+	ft_memdel((void **)&draft);
 }
