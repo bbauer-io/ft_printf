@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 16:20:35 by bbauer            #+#    #+#              #
-#    Updated: 2017/02/17 01:41:43 by bbauer           ###   ########.fr        #
+#    Updated: 2017/03/02 13:50:41 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_utf8charsize.c ft_wcharbits.c ft_wcharsize_utf8.c ft_wctomb.c \
 	  ft_wstrsize_utf8.c ft_wstrnsize_utf8.c ft_utf8strnencode.c \
 	  ft_wstrlen.c ft_wstrcpy.c ft_wchar_memset.c ft_wstrdup.c \
-	  ft_wstrndup.c ft_itoa_base_ull.c
+	  ft_wstrndup.c ft_itoa_base_ull.c ft_ishex.c
 
 OPT = $(SRC:.c=.o)
 HEADER = ./libft.h

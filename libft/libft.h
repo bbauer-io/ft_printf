@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 11:53:06 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 02:37:33 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/02 13:50:23 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_utf8				*ft_utf8strnencode(const wchar_t *wstr, size_t n);
 t_utf8				*ft_utf8strencode(const wchar_t *wstr);
 
 char				*ft_itoa_base_ull(unsigned long long value, int base);
+int					ft_ishex(size_t c);
 char				*ft_itoa_base_uintmax(uintmax_t value, int base);
 char				*ft_itoa_base_intmax(intmax_t value, int base);
 void				ft_putnbr_llong(long long n);

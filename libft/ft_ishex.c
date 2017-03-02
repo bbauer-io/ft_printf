@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_ishex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/02 13:42:56 by bbauer           ###   ########.fr       */
+/*   Created: 2017/03/02 13:47:38 by bbauer            #+#    #+#             */
+/*   Updated: 2017/03/02 13:49:40 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include <locale.h>
+#include "libft.h"
 
-int		main(void)
+int		ft_ishex(size_t c)
 {
-/*	ft_printf("%%#08x, 42\n");
-	ft_printf("%#08x", 42);
-	ft_putstr("\n\n");
-*/	ft_printf("%%#-08x, 42");
-	ft_printf("%#-08x", 42);
-	return (0);
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 70) || (c >= 97 && c <= 102))
+		return (1);
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/03/01 21:02:05 by bbauer           ###   ########.fr        #
+#    Updated: 2017/03/02 13:51:17 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ LIBFT_COMPILED = ft_atoi.o \
 				 ft_isalpha.o \
 				 ft_isascii.o \
 				 ft_isdigit.o \
+				 ft_ishex.o \
 				 ft_isprint.o \
 				 ft_itoa.o \
 				 ft_itoa_base.o \
