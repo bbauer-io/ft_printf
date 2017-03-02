@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 02:18:43 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/02 11:08:59 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void				write_signed_int(t_conversion *conversion, va_list ap,
 	char		*draft;
 
 	nbr = get_signed_int_arg(conversion, ap);
-	draft = ft_itoa_base_intmax(nbr, 10);
+	if (!nbr && conversion->precision_set)
+		draft = ft_strdup("");
+	else
+		draft = ft_itoa_base_intmax(nbr, 10);
 	if (conversion->precision_set)
 		apply_precision(conversion, &draft);
 	if (conversion->width)

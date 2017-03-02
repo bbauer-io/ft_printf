@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 09:05:27 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/30 11:10:18 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/02 12:57:58 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ static int			show_pos_flag_compatibility(t_conversion *conversion)
 {
 	if (conversion->flags.pos_values_begin_w_space
 				|| conversion->flags.show_sign)
-		if (conversion->specifier != S_DECIMAL)
-			return (ERROR);
+		if (conversion->specifier == U_DECIMAL || conversion->specifier == CHAR)
+		{
+			conversion->flags.pos_values_begin_w_space = 0;
+			conversion->flags.show_sign = 0;
+		}
 	return (GOOD);
 }
 

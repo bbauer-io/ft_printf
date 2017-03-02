@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:12:24 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 17:33:05 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/01 21:10:32 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,20 @@ int				read_precision(t_conversion *conversion, va_list ap,
 		format->index++;
 		if (format->str[format->index] == '-')
 			return (treat_negative_precision_as_none(conversion, format));
+		conversion->precision_set = 1;
 		if (format->str[format->index] == '*')
 		{
 			conversion->precision = va_arg(ap, unsigned int);
-			conversion->precision_set = 1;
 			format->index++;
 			return (GOOD);
 		}
 		if (ft_isdigit(format->str[format->index]))
 		{
 			conversion->precision = ft_atoi(&format->str[format->index]);
-			conversion->precision_set = 1;
 			while (ft_isdigit(format->str[format->index]))
 				format->index++;
 			return (GOOD);
 		}
-		return (ERROR); // I'm not sure if this should ERROR or ignore/continue
 	}
 	return (GOOD);
 }

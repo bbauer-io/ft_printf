@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/01/29 13:13:10 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/02 13:13:57 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,27 @@ static int		double_percent(t_format *format)
 	return (0);
 }
 
+static void		double_percent_followup(t_conversion *conversion,
+					t_format *format)
+{
+	int		i;
+
+	i = conversion->width;
+	if (format->str[format->index] == '%')
+	{
+		if (conversion->flags.left_justify)
+			ft_putchar('%');
+		if (conversion->width)
+			while (--i > 0)
+				ft_putchar(' ');
+		if (!conversion->flags.left_justify)
+			ft_putchar('%');
+		format->chars_written += (conversion->width ? conversion->width : 1);
+		format->index++;
+	}
+	return ;
+}
+
 /*
 ** Calls function to check for "%%", if not that, then we go on to decipher the
 ** symbols and convert the variable into the specified formats for printing.
@@ -65,8 +86,9 @@ static void		print_var(t_format *format, va_list ap)
 		write_conversion_substr(&conversion, ap, format);
 		return ;
 	}
-	else if (double_percent(format))
-		return ;
+	else
+		double_percent_followup(&conversion, format);
+	return ;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:50:02 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 02:41:55 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/02 10:11:37 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,33 @@
 
 #include "ft_printf.h"
 
-static void			add_hex_prefix(char **draft)
+static void			add_hex_prefix(t_conversion *conversion, char **draft)
 {
 	char	*temp;
+	int		i;
+	int		needed;
 
-	temp = *draft;
-	*draft = ft_strnew(ft_strlen(*draft) + 2);
-	**draft = '0';
-	*(*draft + 1) = 'X';
-	ft_strcpy(*draft + 2, temp);
-	ft_memdel((void **)&temp);
+	if (!conversion->width || ft_isdigit(**draft) || ft_isdigit(*(*draft + 1)))
+	{
+		needed = ft_isdigit(*(*draft + 1)) && !ft_isdigit(**draft) ? 1 : 2;
+		temp = *draft;
+		*draft = ft_strnew(ft_strlen(*draft) + needed);
+		**draft = '0';
+		*(*draft + 1) = 'X';
+		ft_strncpy(*draft + 2, temp,
+			conversion->width ? conversion->width - needed : ft_strlen(temp));
+		ft_memdel((void **)&temp);
+	}
+	else
+	{
+		i = 0;
+		while (!ft_isdigit((*draft)[i]) || (*draft)[i] == '0')
+			if ((*draft)[i++] == '\0')
+				return ;
+		i -= 2;
+		(*draft)[i] = '0';
+		(*draft)[++i] = 'X';
+	}
 	return ;
 }
 
@@ -36,17 +53,20 @@ void				write_hex(t_conversion *conversion, va_list ap,
 	uintmax_t	value;
 
 	value = get_unsigned_int_arg(conversion, ap);
-	draft = ft_itoa_base_uintmax(value, 16);
+	if (!value && conversion->precision_set)
+		draft = ft_strdup("");
+	else
+		draft = ft_itoa_base_uintmax(value, 16);
 	if (conversion->precision_set && conversion->specifier != POINTER)
 		apply_precision(conversion, &draft);
 	if (conversion->width)
 		apply_width(conversion, &draft);
-	if ((conversion->flags.hash && *draft != '0')
-										|| conversion->specifier == POINTER)
-		add_hex_prefix(&draft);
 	if (conversion->flags.pos_values_begin_w_space
 										|| conversion->flags.show_sign)
 		apply_prefix(conversion, &draft);
+	if ((conversion->flags.hash && *draft != '0' && value)
+										|| conversion->specifier == POINTER)
+		add_hex_prefix(conversion, &draft);
 	if (conversion->specifier == HEX_LOWER || conversion->specifier == POINTER)
 		ft_tolower_str(draft);
 	ft_putstr(draft);
