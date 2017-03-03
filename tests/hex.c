@@ -18,7 +18,7 @@ int		main(void)
 /*	ft_printf("%%#08x, 42\n");
 	ft_printf("%#08x", 42);
 	ft_putstr("\n\n");
-*/	ft_printf("%%#-08x, 42");
-	ft_printf("%#-08x", 42);
+*/	ft_printf("%%#08x, 42\n");
+	ft_printf("%#08x", 42);
 	return (0);
 }

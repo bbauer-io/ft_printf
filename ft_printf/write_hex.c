@@ -36,10 +36,10 @@ static void			add_hex_prefix(t_conversion *conversion, char **draft)
 {
 	int		i;
 
-	if ((ft_ishex(**draft) || ft_ishex(*(*draft + 1))))
-		prefix_helper(conversion, draft);
-	else if (conversion->width && **draft == '0' && (*draft)[1] == '0')
+	if (**draft == '0' && (*draft)[1] == '0')
 		(*draft)[1] = 'X';
+	else if ((ft_ishex(**draft) || ft_ishex(*(*draft + 1))))
+		prefix_helper(conversion, draft);
 	else
 	{
 		i = 0;
