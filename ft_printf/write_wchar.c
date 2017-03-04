@@ -6,31 +6,32 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 22:39:43 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 10:10:51 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 10:31:24 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void			cleanup_memory(wchar_t **draft, char **utf8_draft,
-												char **utf8_draft_post_null)
+static void			cleanup_memory(wchar_t **draft, char **utf8_draft)
 {
 		ft_memdel((void **)draft);
 		ft_memdel((void **)utf8_draft);
-		ft_memdel((void **)utf8_draft_post_null);
 }
 
 static void			print_null_wchar(t_conversion *conversion, t_format *format,
-									wchar_t *draft, char **utf8_draft_post_null)
+																wchar_t *draft)
 {
-	*utf8_draft_post_null = ft_utf8strencode(draft + ft_wstrlen(draft) + 1);
+	char		*utf8_draft_post_null;
+
+	utf8_draft_post_null = ft_utf8strencode(draft + ft_wstrlen(draft) + 1);
 	ft_putchar('\0');
 	format->chars_written++;
 	if (ft_wstrlen(draft) + 1 < conversion->width)
 	{
-		ft_putstr(*utf8_draft_post_null);
+		ft_putstr(utf8_draft_post_null);
 		format->chars_written += ft_wstrlen(&draft[ft_wstrlen(draft) + 2]);
 	}
+	ft_memdel((void **)&utf8_draft_post_null);
 }
 
 void				write_wchar(t_conversion *conversion, va_list ap,
@@ -38,7 +39,6 @@ void				write_wchar(t_conversion *conversion, va_list ap,
 {
 	wchar_t		*draft;
 	char		*utf8_draft;
-	char		*utf8_draft_post_null;
 
 	if (conversion->flags.hash)
 		return ;
@@ -57,7 +57,7 @@ void				write_wchar(t_conversion *conversion, va_list ap,
 		ft_putstr(utf8_draft);
 		format->chars_written += ft_wstrlen(draft);
 		if (*draft == '\0')
-			print_null_wchar(conversion, format, draft, &utf8_draft_post_null);
-		cleanup_memory(&draft, &utf8_draft, &utf8_draft_post_null);
+			print_null_wchar(conversion, format, draft);
+		cleanup_memory(&draft, &utf8_draft);
 	}
 }
