@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 01:03:37 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 11:30:51 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int		main(void)
 	setlocale(LC_ALL, "");
 	ft_printf("WCHARS:\n");
 
-	ft_printf("%C", L'猫');
+	ft_printf("%lc", L'猫');
 	ft_printf("\n");
-	ft_printf("%C", L'δ');
+	ft_printf("%lc", L'δ');
 	ft_printf("\n");
-	ft_printf("%C", L'요');
+	ft_printf("%lc", L'요');
 	ft_printf("\n");
-	ft_printf("%C", L'莨');
+	ft_printf("%lc", L'莨');
 	ft_printf("\n");
-	ft_printf("%C", L'ي');
+	ft_printf("%lc", L'ي');
 	ft_printf("\n");
-	ft_printf("%C", 0);
-	printf("\n%C", 0);
+	ft_printf("%lc", 0);
+	printf("\n%lc", 0);
 	ft_printf("\n");
 
 
