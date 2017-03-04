@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:42:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 02:30:14 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 20:38:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		apply_prefix_hex(t_conversion *conversion, char **draft)
 	else
 	{
 		temp = *draft;
-		*draft = ft_strnew(ft_strlen(*draft));
+		*draft = ft_strnew(ft_strlen(*draft + 1));
 		**draft = prefix_char;
 		ft_strcpy(&(*draft)[1], temp);
 		ft_memdel((void **)&temp);
@@ -50,7 +50,7 @@ static void		apply_space_prefix(char **draft)
 	else
 	{
 		temp = *draft;
-		*draft = ft_strnew(ft_strlen(*draft));
+		*draft = ft_strnew(ft_strlen(*draft + 1));
 		**draft = prefix_char;
 		ft_strcpy(&(*draft)[1], temp);
 		ft_memdel((void **)&temp);
@@ -70,7 +70,7 @@ static void		apply_sign_prefix(char **draft)
 		i++;
 	if (i > 0 && (*draft)[i] != '0')
 		i--;
-	if ((*draft)[i] == '0' || (*draft)[i] == ' ')
+	else if ((*draft)[i] == ' ')
 		(*draft)[i] = prefix_char;
 	else
 	{

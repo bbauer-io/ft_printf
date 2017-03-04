@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:50:02 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/02 14:03:54 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 17:08:50 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,43 +79,3 @@ void				write_hex(t_conversion *conversion, va_list ap,
 	format->chars_written += ft_strlen(draft);
 	ft_memdel((void **)&draft);
 }
-
-
-
-/*
-static void			prefix_helper(t_conversion *conversion, char **draft)
-{
-	char	*temp;
-	int		needed;
-
-	needed = ft_ishex(*(*draft + 1)) && !ft_ishex(**draft) ? 1 : 2;
-	temp = *draft;
-	*draft = ft_strnew(ft_strlen(*draft) + needed);
-	**draft = '0';
-	*(*draft + 1) = 'X';
-	ft_strncpy(*draft + 2, temp,
-			conversion->width ? conversion->width - needed : ft_strlen(temp));
-	ft_memdel((void **)&temp);
-	return ;
-}
-
-static void			add_hex_prefix(t_conversion *conversion, char **draft)
-{
-	int		i;
-
-	if (!conversion->width && (ft_ishex(**draft) || ft_ishex(*(*draft + 1))))
-		prefix_helper(conversion, draft);
-	else if (conversion->width && **draft == ' ' && (*draft)[1] == '0')
-		(*draft)[1] = 'X';
-	else
-	{
-		i = 0;
-		while (!ft_ishex((*draft)[i]) || (*draft)[i] == '0')
-			if ((*draft)[i++] == '\0')
-				return ;
-		i -= 2;
-		(*draft)[i] = '0';
-		(*draft)[++i] = 'X';
-	}
-}
-*/
