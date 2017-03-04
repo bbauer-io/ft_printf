@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 11:53:29 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/02 10:42:40 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 22:18:24 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void				write_octal(t_conversion *conversion, va_list ap,
 		draft = ft_strdup("");
 	else
 		draft = ft_itoa_base_uintmax(value, 8);
-	if (conversion->flags.hash)
+	if (conversion->flags.hash && value)
 		add_octal_prefix(&draft);
 	if (conversion->precision_set)
 		apply_precision(conversion, &draft);
