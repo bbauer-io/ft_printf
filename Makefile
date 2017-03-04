@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/03/02 13:51:17 by bbauer           ###   ########.fr        #
+#    Updated: 2017/03/03 21:41:52 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ FT_PRINTF_COMPILED = apply_precision.o \
 					 apply_prefix.o \
 					 apply_width.o \
 					 apply_width_wchar.o \
+					 fix_sign_placement.o \
 					 ft_printf.o \
 					 ft_vprintf.o \
 					 read_flags.o \

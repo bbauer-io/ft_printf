@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/03 17:39:16 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 21:41:07 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ void				apply_precision_wstr(t_conversion *conversion,
 											wchar_t **draft);
 void				apply_prefix(t_conversion *conversion, char **draft);
 uintmax_t			get_unsigned_int_arg(t_conversion *conversion, va_list ap);
+void				fix_sign_placement(char **draft);
 
 #endif
