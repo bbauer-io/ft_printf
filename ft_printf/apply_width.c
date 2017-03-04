@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:03 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/02 11:51:51 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 21:29:50 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,43 @@ static void			apply_width_str(t_conversion *conversion, char **draft)
 ** never truncate the number.
 */
 
+static char			get_sign(char **draft)
+{
+	int			i;
+	char		sign;
+
+	i = 0;
+	sign = '\0';
+	while ((*draft)[i] != '\0')
+	{
+		if ((*draft)[i] == '-')
+			sign = '-';
+		else if ((*draft)[i] == '+')
+			sign = '+';
+		i++;
+	}
+	return (sign);
+}
+
+
+static void			fix_sign_placement(char **draft)
+{
+	int			i;
+	char		sign;
+
+	i = 0;
+	if ((sign = get_sign(draft)))
+	{
+		while ((*draft)[i] != '\0' && (*draft)[i] != '0')
+			i++;
+		(*draft)[i++] = sign;
+		while ((*draft)[i] != '\0' && (*draft)[i] != sign)
+			i++;
+		(*draft)[i] = '0';
+	}
+}
+
+
 static void			apply_width_int(t_conversion *conversion, char **draft)
 {
 	char	*temp;
@@ -84,6 +121,8 @@ static void			apply_width_int(t_conversion *conversion, char **draft)
 			ft_memset(*draft, (conversion->flags.pad_with_zeros ? '0' : ' '),
 										conversion->width - ft_strlen(temp));
 			ft_strcpy(&(*draft)[conversion->width - ft_strlen(temp)], temp);
+			if (conversion->flags.pad_with_zeros)
+				fix_sign_placement(draft);
 		}
 		ft_memdel((void **)&temp);
 	}
