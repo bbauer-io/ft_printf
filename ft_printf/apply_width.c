@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:03 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/03 21:39:47 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 21:58:10 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void			apply_width_int(t_conversion *conversion, char **draft)
 										conversion->width - ft_strlen(temp));
 			ft_strcpy(&(*draft)[conversion->width - ft_strlen(temp)], temp);
 			if (conversion->flags.pad_with_zeros)
-				fix_sign_placement(draft);
+				fix_sign_placement(conversion, draft);
 		}
 		ft_memdel((void **)&temp);
 	}

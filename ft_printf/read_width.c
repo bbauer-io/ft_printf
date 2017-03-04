@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:11:52 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/06 15:04:19 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 22:09:33 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 /*
 ** Read specified width, get va_arg if the width is a * (specified in arguments
 ** instead of in the format string).
-*/
-
-/*
-** I am wondering if I need a new atoi that returns an Unsigned int here...
 */
 
 int			read_width(t_conversion *conversion, va_list ap, t_format *format)

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 18:28:58 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/02 12:28:55 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/03 22:09:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void			print_null_char(t_conversion *conversion, t_format *format,
 		format->chars_written += ft_strlen(&draft[ft_strlen(draft) + 2]);
 	}
 }
-
 
 void				write_char(t_conversion *conversion, va_list ap,
 															t_format *format)
