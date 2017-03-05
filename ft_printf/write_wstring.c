@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 00:05:48 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/17 02:41:39 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 16:12:51 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void				write_wstring(t_conversion *conversion, va_list ap,
 		apply_width_wchar(conversion, &draft);
 	utf8draft = ft_utf8strencode(draft);
 	ft_putstr(utf8draft);
-	format->chars_written += ft_wstrlen(draft);
+	format->chars_written += ft_strlen((char *)utf8draft);
 	ft_memdel((void **)&draft);
 	ft_memdel((void **)&utf8draft);
 	return ;
