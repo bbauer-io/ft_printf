@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 20:03:25 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 13:53:18 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/05 14:57:22 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int			precision_is_settable(t_conversion *conversion)
 		if ((conversion->specifier == CHAR && conversion->length >= L)
 				|| conversion->specifier == POINTER)
 			conversion->precision_set = 0;
-			//return (ERROR);
 	return (GOOD);
 }
 

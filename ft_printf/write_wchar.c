@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 22:39:43 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 15:51:29 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/05 14:58:16 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void			cleanup_memory(wchar_t **draft, char **utf8_draft)
 {
-		ft_memdel((void **)draft);
-		ft_memdel((void **)utf8_draft);
+	ft_memdel((void **)draft);
+	ft_memdel((void **)utf8_draft);
 }
 
 static void			print_null_wchar(t_conversion *conversion, t_format *format,

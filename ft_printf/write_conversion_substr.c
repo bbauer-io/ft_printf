@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 07:57:15 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 17:36:00 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/05 14:57:56 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void				write_conversion_substr(t_conversion *conversion,
 		write_wstring(conversion, ap, format);
 	else if (conversion->specifier == STRING)
 		write_string(conversion, ap, format);
-	if (conversion->specifier == CHAR && conversion->length >= L && MB_CUR_MAX > 1)
+	if (conversion->specifier == CHAR && conversion->length >= L
+												&& MB_CUR_MAX > 1)
 		write_wchar(conversion, ap, format);
 	else if (conversion->specifier == CHAR)
 		write_char(conversion, ap, format);
