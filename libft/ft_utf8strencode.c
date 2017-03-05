@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 16:56:28 by bbauer            #+#    #+#             */
-/*   Updated: 2017/02/16 16:56:35 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 16:01:31 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_utf8			*ft_utf8strencode(const wchar_t *wstr)
 	wchar_t		c;
 	t_utf8		*utf8;
 
+	if (!wstr || !*wstr)
+		return (ft_strdup(""));
 	len = ft_wstrsize_utf8(wstr);
 	if (len > 0)
 		if ((utf8 = (t_utf8 *)malloc(sizeof(t_utf8) * (len + 1))))

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 22:39:43 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 10:31:24 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 15:51:29 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void			print_null_wchar(t_conversion *conversion, t_format *format,
 	if (ft_wstrlen(draft) + 1 < conversion->width)
 	{
 		ft_putstr(utf8_draft_post_null);
-		format->chars_written += ft_wstrlen(&draft[ft_wstrlen(draft) + 2]);
+		format->chars_written += ft_strlen((char *)&utf8_draft_post_null);
 	}
 	ft_memdel((void **)&utf8_draft_post_null);
 }
@@ -55,7 +55,7 @@ void				write_wchar(t_conversion *conversion, va_list ap,
 		apply_width_wchar(conversion, &draft);
 		utf8_draft = ft_utf8strencode(draft);
 		ft_putstr(utf8_draft);
-		format->chars_written += ft_wstrlen(draft);
+		format->chars_written += ft_strlen(utf8_draft);
 		if (*draft == '\0')
 			print_null_wchar(conversion, format, draft);
 		cleanup_memory(&draft, &utf8_draft);
