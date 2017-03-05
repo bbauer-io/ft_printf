@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:17:13 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 16:02:07 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/04 17:24:40 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,35 @@ int		main(void)
 	setlocale(LC_ALL, "");
 	ft_printf("ft_printf WCHARS:\n");
 
-	ret = ft_printf("%C", L'猫');
+	ret = ft_printf("%lc", L'猫');
 	ft_printf("\n%d\n", ret);
-	ret = ft_printf("%C", L'δ');
+	ret = ft_printf("%lc", L'δ');
 	ft_printf("\n%d\n", ret);
-	ret = ft_printf("%C", L'요');
+	ret = ft_printf("%lc", L'요');
 	ft_printf("\n%d\n", ret);
-	ret = ft_printf("%C", L'莨');
+	ret = ft_printf("%lc", L'莨');
 	ft_printf("\n%d\n", ret);
-	ret = ft_printf("%C", L'ي');
+	ret = ft_printf("%lc", L'ي');
 	ft_printf("\n%d\n", ret);
-	ret = ft_printf("%C", 0);
+	ret = ft_printf("%lc", 0);
+	ft_printf("\n%d\n", ret);
+	ret = ft_printf("%lc", L'🀩');
 	ft_printf("\n%d\n", ret);
 
 	printf("printf WCHARS:\n");
-	ret = printf("%C", L'猫');
+	ret = printf("%lc", L'猫');
 	printf("\n%d\n", ret);
-	ret = printf("%C", L'δ');
+	ret = printf("%lc", L'δ');
 	printf("\n%d\n", ret);
-	ret = printf("%C", L'요');
+	ret = printf("%lc", L'요');
 	printf("\n%d\n", ret);
-	ret = printf("%C", L'莨');
+	ret = printf("%lc", L'莨');
 	printf("\n%d\n", ret);
-	ret = printf("%C", L'ي');
+	ret = printf("%lc", L'ي');
 	printf("\n%d\n", ret);
-	ret = printf("%C", 0);
+	ret = printf("%lc", 0);
+	printf("\n%d\n", ret);
+	ret = printf("%lc", L'🀩');
 	printf("\n%d\n", ret);
 
 /*
