@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:25:50 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 18:40:15 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:27:56 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ uintmax_t		get_unsigned_int_arg(t_conversion *conversion, va_list ap)
 
 	if (conversion->specifier == POINTER)
 	{
-		nbr = (unsigned long)va_arg(ap, void *);
+		nbr = (uintmax_t)va_arg(ap, void *);
 		return (nbr);
 	}
 	if (conversion->length == HH)
 		nbr = (unsigned char)va_arg(ap, int);
-	if (conversion->length == H || conversion->length == DEFAULT)
+	if (conversion->length == H
+		nbr = (unsigned short int)va_arg(ap, unsigned int);
+	if (conversion->length == DEFAULT)
 		nbr = va_arg(ap, unsigned int);
 	if (conversion->length == LL)
 		nbr = va_arg(ap, unsigned long long);

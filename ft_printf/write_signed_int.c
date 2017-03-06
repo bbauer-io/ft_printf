@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:56:09 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/03 20:46:24 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:26:30 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ static intmax_t		get_signed_int_arg(t_conversion *conversion, va_list ap)
 
 	if (conversion->length == HH)
 		nbr = (signed char)va_arg(ap, int);
-	if (conversion->length == H || conversion->length == DEFAULT)
+	if (conversion->length == H)
+		nbr = (short int)va_arg(ap, int);
+	if (conversion->length == DEFAULT)
 		nbr = va_arg(ap, int);
 	if (conversion->length == LL)
 		nbr = va_arg(ap, long long);
