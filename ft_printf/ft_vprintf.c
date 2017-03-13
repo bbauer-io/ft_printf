@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 17:16:21 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/13 07:25:08 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/13 07:34:44 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void		print_var(t_format *format, va_list ap)
 			&& verify_flag_compatibility(&conversion, format) == GOOD)
 	{
 		if (conversion.specifier == CHARS_PRINTED)
-			save_chars_printed(&conversion, ap, format);
+			save_chars_printed(ap, format);
 		else
 			write_conversion_substr(&conversion, ap, format);
 		return ;
