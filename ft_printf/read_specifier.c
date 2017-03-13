@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 09:11:36 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/04 15:11:23 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/13 07:19:49 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static t_specifier		compare_specifiers(char c)
 		return (STRING);
 	if (c == 'p')
 		return (POINTER);
+	if (c == 'n')
+		return (CHARS_PRINTED);
 	return (INVALID_SPECIFIER);
 }
 

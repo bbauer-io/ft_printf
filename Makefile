@@ -6,7 +6,7 @@
 #    By: bbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:48:11 by bbauer            #+#    #+#              #
-#    Updated: 2017/03/03 21:41:52 by bbauer           ###   ########.fr        #
+#    Updated: 2017/03/13 07:30:33 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ FT_PRINTF_COMPILED = apply_precision.o \
 					 read_precision.o \
 					 read_specifier.o \
 					 read_width.o \
+					 save_chars_printed.o \
 					 verify_flag_compatibility.o \
 					 verify_flag_compatibility_continued.o \
 					 write_char.o \
