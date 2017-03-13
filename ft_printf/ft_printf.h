@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:43:11 by bbauer            #+#    #+#             */
-/*   Updated: 2017/03/13 07:33:02 by bbauer           ###   ########.fr       */
+/*   Updated: 2017/03/13 08:21:48 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,6 @@ void				fix_sign_placement(t_conversion *conversion, char **draft);
 ** Saves the number of chars written so far ('n' specifier)
 */
 
-void		save_chars_printed(va_list ap, t_format *format);
+void				save_chars_printed(va_list ap, t_format *format);
 
 #endif
