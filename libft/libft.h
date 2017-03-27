@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>
+# include <stdint.h>
 
 # define BUFF_SIZE 1024
 

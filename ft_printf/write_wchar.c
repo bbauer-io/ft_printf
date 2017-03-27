@@ -47,7 +47,7 @@ void				write_wchar(t_conversion *conversion, va_list ap,
 		draft = (wchar_t *)malloc(sizeof(wchar_t) * 2);
 		*draft = va_arg(ap, wint_t);
 		draft[1] = '\0';
-		if (!conversion->width & conversion->flags.pos_values_begin_w_space)
+		if (!conversion->width && conversion->flags.pos_values_begin_w_space)
 		{
 			ft_putchar(' ');
 			format->chars_written++;
