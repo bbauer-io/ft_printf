@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
+#include "ft_printf.h"
 #include <locale.h>
 #include <stdio.h>
 

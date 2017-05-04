@@ -31,6 +31,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_wstrlen.c ft_wstrcpy.c ft_wchar_memset.c ft_wstrdup.c \
 	  ft_wstrndup.c ft_itoa_base_ull.c ft_ishex.c
 
+OBJDIR = ./obj/
 OPT = $(SRC:.c=.o)
 HEADER = ./libft.h
 FLAGS = -c -Wall -Wextra -Werror
@@ -38,15 +39,21 @@ FLAGS = -c -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc $(OPTIONS) $(SRC) $(FLAGS)
-	ar rc $(NAME) $(OPT)
-	ranlib $(NAME)
+	@echo "Compiling libft"
+	@gcc $(OPTIONS) $(SRC) $(FLAGS)
+	@ar rc $(NAME) $(OPT)
+	@mkdir $(OBJDIR)
+	@mv $(OPT) $(OBJDIR)
+	@ranlib $(NAME)
+	@echo "lift: SUCCESS!"
 
 clean:
-	/bin/rm -f $(OPT)
+	@echo "Cleaning libft"
+	@/bin/rm -rf $(OBJDIR)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f libft.h.gch
+	@echo "FCleaning libft"
+	@/bin/rm -f $(NAME)
+	@/bin/rm -f libft.h.gch
 
 re: fclean all
